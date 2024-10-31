@@ -1,13 +1,10 @@
 import type { Config } from 'tailwindcss'
 
+import plugin from './tailwind.plugin'
+
 const config = {
   darkMode: ['class'],
-  content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-  ],
+  content: ['./src/**/*.{ts,tsx}'],
   prefix: '',
   theme: {
     container: {
@@ -74,7 +71,8 @@ const config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  // eslint-disable-next-line unicorn/prefer-module, @typescript-eslint/no-require-imports
+  plugins: [require('tailwindcss-animate'), plugin()],
 } satisfies Config
 
 export default config
