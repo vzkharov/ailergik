@@ -15,19 +15,7 @@
     "unicorn/no-null": "off",
     "@typescript-eslint/no-empty-object-type": "off",
     "@typescript-eslint/class-literal-property-style": "off",
-    "unicorn/prevent-abbreviations": [
-      "error",
-      {
-        "allowList": {
-          "e2e": true
-        },
-        "replacements": {
-          "props": false,
-          "ref": false,
-          "params": false
-        }
-      }
-    ]
+    "unicorn/prevent-abbreviations": ["off"]
   },
   "overrides": [
     {
