@@ -1,0 +1,43 @@
+.spacer {
+  --indent-x: 0px;
+  --indent-y: 0px;
+
+  margin-top: var(--indent-y);
+  margin-left: var(--indent-x);
+}
+
+.y_xs {
+  --indent-y: 0.75rem;
+}
+
+.y_sm {
+  --indent-y: 1rem;
+}
+
+.y_md {
+  --indent-y: 1.25rem;
+}
+
+.y_lg {
+  --indent-y: 1.5rem;
+}
+
+.y_xl {
+  --indent-y: 2rem;
+}
+
+.y_2xl {
+  --indent-y: 2.5rem;
+}
+
+.y_3xl {
+  --indent-y: 4rem;
+}
+
+.y_4xl {
+  --indent-y: 6rem;
+}
+
+.full {
+  @apply w-full flex-1;
+}
