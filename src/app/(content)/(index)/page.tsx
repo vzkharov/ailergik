@@ -1,11 +1,13 @@
-import Image from 'next/image'
+import { Image } from '~/components/ui/image'
 
-export default function Home() {
+import { Posts } from './_components/posts'
+
+const Home = () => {
   return (
     <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20">
       <main className="row-start-2 flex flex-col items-center gap-8 sm:items-start">
         <Image
-          className="dark:invert"
+          className="w-64 dark:invert"
           src="/next.svg"
           alt="Next.js logo"
           width={180}
@@ -31,11 +33,11 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <Image
-              className="dark:invert"
+              className="w-5 dark:invert"
               src="/vercel.svg"
               alt="Vercel logomark"
               width={20}
-              height={20}
+              height={17.31}
             />
             Deploy now
           </a>
@@ -48,6 +50,8 @@ export default function Home() {
             Read our docs
           </a>
         </div>
+
+        <Posts />
       </main>
       <footer className="row-start-3 flex flex-wrap items-center justify-center gap-6">
         <a
@@ -62,6 +66,7 @@ export default function Home() {
             alt="File icon"
             width={16}
             height={16}
+            className="w-4"
           />
           Learn
         </a>
@@ -77,6 +82,7 @@ export default function Home() {
             alt="Window icon"
             width={16}
             height={16}
+            className="w-4"
           />
           Examples
         </a>
@@ -92,6 +98,7 @@ export default function Home() {
             alt="Globe icon"
             width={16}
             height={16}
+            className="w-4"
           />
           Go to nextjs.org →
         </a>
@@ -99,3 +106,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home
