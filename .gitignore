@@ -40,7 +40,5 @@ yarn-error.log*
 next-env.d.ts
 
 # .lock
-pnpm.lock
-bun.lockb
-yarn.lock
-package-lock.json
+*.lock
+*.lockb
