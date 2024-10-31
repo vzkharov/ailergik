@@ -1,8 +1,9 @@
 import type { CSSProperties } from 'react'
+import InternalImage, { ImageProps as InternalImageProps } from 'next/image'
 
 import { cn } from '~/lib/utils'
 
-type ImageProps = Omit<React.ComponentProps<'img'>, 'alt'> & {
+type ImageProps = Omit<InternalImageProps, 'alt'> & {
   alt?: string
 }
 
@@ -15,7 +16,7 @@ const Image = ({
   height = 1000,
   ...props
 }: ImageProps) => (
-  <Image
+  <InternalImage
     {...props}
     src={src}
     alt={alt}
