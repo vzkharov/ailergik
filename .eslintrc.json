@@ -6,11 +6,13 @@
     "plugin:import/recommended",
     "plugin:prettier/recommended"
   ],
+  "plugins": ["prettier"],
   "rules": {
     "unicorn/no-array-callback-reference": "off",
     "unicorn/no-array-for-each": "off",
     "unicorn/no-array-reduce": "off",
     "unicorn/no-null": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
     "unicorn/prevent-abbreviations": [
       "error",
       {
