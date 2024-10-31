@@ -32,10 +32,12 @@
     "next": "15.0.2",
     "next-themes": "^0.3.0",
     "react": "19.0.0-rc-02c0e824-20241028",
+    "react-cookie": "^7.2.2",
     "react-dom": "19.0.0-rc-02c0e824-20241028",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
+    "use-debounce": "^10.0.4",
     "vaul": "^1.1.1"
   },
   "devDependencies": {
