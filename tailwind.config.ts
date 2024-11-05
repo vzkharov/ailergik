@@ -11,7 +11,7 @@ const config = {
       center: true,
       padding: '2rem',
       screens: {
-        '2xl': '1400px',
+        '2xl': '1160px',
       },
     },
     extend: {
@@ -49,6 +49,8 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        // cms
+        _accent: 'var(--accent-color)',
       },
       fontFamily: {
         sans: 'var(--font-geist-sans)',
