@@ -1,14 +1,12 @@
 type HighlightedTitleProps = {
-    children: React.ReactNode
-}
-  
-const HighlightedTitle = ({ children }: HighlightedTitleProps) => {
-return (
-    <h3 className="relative inline-block font-helveticaMedium text-4xl max-w-[740px] uppercase">
-        <span className="absolute w-[96%] h-6 bottom-0 -right-2 bg-[#9ED8F6] rounded-md -z-10" />
-        {children}
-    </h3>
-)
+  children: React.ReactNode
 }
 
-export  {HighlightedTitle}
+const HighlightedTitle = ({ children }: HighlightedTitleProps) => (
+  <h3 className="relative inline-block max-w-[740px] font-helveticaMedium text-4xl uppercase">
+    <span className="absolute -right-2 bottom-0 -z-10 h-6 w-[96%] rounded-md bg-[#9ED8F6]" />
+    {children}
+  </h3>
+)
+
+export { HighlightedTitle }
