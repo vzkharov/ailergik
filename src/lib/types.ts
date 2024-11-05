@@ -29,8 +29,8 @@ type Provider = (props: { children: ReactChildren }) => React.ReactNode
 type Layout = (props: Readonly<{ children: ReactChildren }>) => React.ReactNode
 
 type PageProps<P = {}, S = {}> = Readonly<{
-  params: P
-  searchParams: S
+  params: Promise<P>
+  searchParams: Promise<S>
 }>
 type Page<P = {}, S = {}> = (
   props: PageProps<P, S>,
