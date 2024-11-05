@@ -11,14 +11,46 @@ const geistMono = localFont({
   weight: '100 900',
 })
 
+const helveticaLight = localFont({
+  src: './HelveticaNeueCyr-Light.woff',
+  variable: '--font-helvetica-light',
+  weight: '100 900',
+})
+
+const helveticaItalicLight = localFont({
+  src: './HelveticaNeueCyr-ItalicLight.woff',
+  variable: '--font-helvetica-italic-light',
+  weight: '100 900',
+})
+
+const helveticaMedium = localFont({
+  src: './HelveticaNeueCyr-Medium.woff',
+  variable: '--font-helvetica-medium',
+  weight: '100 900',
+})
+
+const helveticaBold = localFont({
+  src: './HelveticaNeueCyr-Bold.woff',
+  variable: '--font-helvetica-bold',
+  weight: '100 900',
+})
+
 const vars = {
   mono: geistMono.variable,
   geist: geistSans.variable,
+  helveticaLight: helveticaLight.variable,
+  helveticaMedium: helveticaMedium.variable,
+  helveticaBold: helveticaBold.variable,
+  helveticaItalicLight: helveticaItalicLight.variable,
 }
 
 const fontsClassName = [
   geistSans.variable,
   geistMono.variable,
+  helveticaLight.variable,
+  helveticaMedium.variable,
+  helveticaBold.variable,
+  helveticaItalicLight.variable,
   'antialiased',
 ].join(' ')
 
