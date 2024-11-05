@@ -18,6 +18,7 @@ export const FACEBOOK_VERIFICATION = process.env.FACEBOOK_VERIFICATION ?? ''
  * @description directus credentials
  */
 
-export const DIRECTUS_HOST = process.env.DIRECTUS_HOST ?? ''
+export const DIRECTUS_HOST = process.env.NEXT_PUBLIC_DIRECTUS_HOST ?? ''
 export const DIRECTUS_EMAIL = process.env.DIRECTUS_EMAIL ?? ''
 export const DIRECTUS_PASSWORD = process.env.DIRECTUS_PASSWORD ?? ''
+export const DIRECTUS_TOKEN = process.env.DIRECTUS_TOKEN ?? ''
