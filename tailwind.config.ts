@@ -53,6 +53,10 @@ const config = {
       fontFamily: {
         sans: 'var(--font-geist-sans)',
         mono: 'var(--font-geist-mono)',
+        helveticaLight: 'var(--font-helvetica-light)',
+        helveticaMedium: 'var(--font-helvetica-medium)',
+        helveticaBold: 'var(--font-helvetica-bold)',
+        helveticaItalicLight: 'var(--font-helvetica-italic-light)'
       },
       borderRadius: {
         lg: 'var(--radius)',
