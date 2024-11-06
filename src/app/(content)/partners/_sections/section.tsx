@@ -9,6 +9,7 @@ type Props = {
 type SectionProps<T extends As = 'section'> = MergeWithHTMLProps<T, Props>
 
 const Section = <T extends As = 'section'>({
+  id,
   as,
   bg,
   className,
@@ -17,7 +18,7 @@ const Section = <T extends As = 'section'>({
   const Slot = as || 'section'
 
   return (
-    <Slot className={bg}>
+    <Slot id={id} className={bg}>
       <div className={className}>{children}</div>
     </Slot>
   )
