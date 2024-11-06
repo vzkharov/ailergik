@@ -11,7 +11,7 @@ const config = {
       center: true,
       padding: '2rem',
       screens: {
-        '2xl': '1160px',
+        '2xl': '1192px',
       },
     },
     extend: {
@@ -58,7 +58,7 @@ const config = {
         helveticaLight: 'var(--font-helvetica-light)',
         helveticaMedium: 'var(--font-helvetica-medium)',
         helveticaBold: 'var(--font-helvetica-bold)',
-        helveticaItalicLight: 'var(--font-helvetica-italic-light)'
+        helveticaItalicLight: 'var(--font-helvetica-italic-light)',
       },
       borderRadius: {
         lg: 'var(--radius)',

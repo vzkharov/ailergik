@@ -72,9 +72,16 @@ h1 {
   * {
     @apply border-border;
   }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 40px;
+  }
+
   body {
-    @apply container bg-background text-foreground;
+    @apply container bg-background;
     font-size: 20px;
-    line-height: 26px;
+    line-height: 1;
+    color: #142850;
   }
 }
