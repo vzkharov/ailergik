@@ -37,7 +37,7 @@ const subtitle =
   'Инновационные подходы и стратегии для повышения качества обслуживания клиентов'
 
 const PartnersPage: Page = () => (
-  <main className="flex flex-col gap-y-24 pb-24 pt-8">
+  <main className="flex flex-col gap-y-24 pb-5 pt-8">
     <div className="absolute inset-x-0 top-0 -z-10 h-[454px] bg-[#9ED8F6]" />
 
     <div className="relative">
@@ -229,6 +229,11 @@ const PartnersPage: Page = () => (
     <Section id={navigation.contacts.id}>
       <ContactsCard />
     </Section>
+    <footer>
+      <h5 className="font-gilroy text-[10px] leading-5">
+        Copyright 2024 © ООО “Экселлент Софт” УНП 193682290
+      </h5>
+    </footer>
   </main>
 )
 

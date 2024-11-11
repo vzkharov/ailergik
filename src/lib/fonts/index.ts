@@ -11,6 +11,12 @@ const geistMono = localFont({
   weight: '100 900',
 })
 
+const gilroy = localFont({
+  src: './gilroy-regular.ttf',
+  display: 'swap',
+  variable: '--font-gilroy',
+})
+
 const helveticaLight = localFont({
   src: './HelveticaNeueCyr-Light.woff',
   variable: '--font-helvetica-light',
@@ -42,6 +48,7 @@ const vars = {
   helveticaMedium: helveticaMedium.variable,
   helveticaBold: helveticaBold.variable,
   helveticaItalicLight: helveticaItalicLight.variable,
+  gilroy: gilroy.variable,
 }
 
 const fontsClassName = [
@@ -51,6 +58,7 @@ const fontsClassName = [
   helveticaMedium.variable,
   helveticaBold.variable,
   helveticaItalicLight.variable,
+  gilroy.variable,
   'antialiased',
 ].join(' ')
 

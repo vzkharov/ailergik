@@ -3,12 +3,14 @@ import type { StyleProps } from '~/lib/types'
 
 type HighlightedTitleProps = StyleProps & {
   children: React.ReactNode
+  spanclassName?: string
 }
 
 const HighlightedTitle = ({
   children,
   style,
   className,
+  spanclassName,
 }: HighlightedTitleProps) => (
   <h3
     style={style}
@@ -17,7 +19,12 @@ const HighlightedTitle = ({
       className,
     )}
   >
-    <span className="absolute -right-2 bottom-0 -z-10 h-6 w-[96%] rounded-md bg-[#9ED8F6]" />
+    <span
+      className={cn(
+        'absolute -right-2 bottom-0 -z-10 h-6 w-[96%] rounded-md bg-[#9ED8F6]',
+        spanclassName,
+      )}
+    />
     {children}
   </h3>
 )

@@ -53,6 +53,7 @@ const config = {
         _accent: 'var(--accent-color)',
       },
       fontFamily: {
+        gilroy: 'var(--font-gilroy)',
         sans: 'var(--font-geist-sans)',
         mono: 'var(--font-geist-mono)',
         helveticaLight: 'var(--font-helvetica-light)',
