@@ -23,7 +23,7 @@ const ServiceCard = ({ img, title, style, className }: ServiceCardProps) => (
       <h6 className="mb-5 max-w-[550px] font-helveticaMedium text-2xl leading-tight md:mb-auto md:mt-auto md:text-[30px]">
         {title}
       </h6>
-      <DetailButton className="w-fit" />
+      <DetailButton className="w-fit group-[[data-state=open]]/accordion-trigger:invisible" />
     </div>
     <Image
       src={img}

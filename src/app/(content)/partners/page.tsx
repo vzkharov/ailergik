@@ -13,7 +13,6 @@ import { services } from './_data/services'
 import { navigation } from './_data/links'
 
 import { JoinCard } from './components/join-card'
-import { TopicCard } from './components/topic-card'
 import { DoctorCard } from './components/doctor-card'
 import { ServiceCard } from './components/service-card'
 import { BenefitCard } from './components/benefit-card'
@@ -23,6 +22,15 @@ import { Card, CardDescription, CardTitle } from './components/cards'
 import { Header } from './_sections/header'
 import { Section } from './_sections/section'
 import { SectionProblems } from './_sections/section-problems'
+import {
+  PartnersAccordion,
+  PartnersAccordionItem,
+} from './components/partners-accordion'
+import {
+  ServiceAccordion,
+  ServiceAccordionItem,
+} from './components/service-accordion'
+import { ContactsCard } from './components/contacts-card'
 
 const title = 'Приглашаем компании и врачей к  сотрудничеству!'
 const subtitle =
@@ -86,10 +94,56 @@ const PartnersPage: Page = () => (
 
       <Spacer y="xl" />
 
-      <div className="flex flex-col gap-y-4">
-        {topics.map(topic => (
-          <TopicCard key={topic.id} {...topic} />
-        ))}
+      <div className="flex flex-col space-y-10">
+        <PartnersAccordion defaultValue={[topics[0]?.id || '']}>
+          {topics.map(topic => (
+            <PartnersAccordionItem
+              title={topic.title}
+              description={topic.description}
+              value={topic.id}
+              key={topic.id}
+              color={topic.color}
+            >
+              <div className="flex flex-row gap-10 p-8">
+                <div className="flex flex-1">
+                  <div className="flex flex-col gap-10">
+                    {topic.content.map((block, index) => (
+                      <div key={index} className="flex flex-col gap-2">
+                        <h5 className="font-helveticaLight text-xl uppercase">
+                          {block.title}
+                        </h5>
+                        <p className="font-helveticaLight text-base leading-5">
+                          {block.text}
+                        </p>
+                      </div>
+                    ))}
+
+                    <button className="inline-flex h-10 w-fit items-center justify-center rounded-full bg-[#142850] px-7 py-5 font-helveticaLight text-sm text-white">
+                      <span className="translate-y-px uppercase leading-none">
+                        Отправить сообщение
+                      </span>
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex flex-row gap-5">
+                  {topic.image.map((img, index) => (
+                    <div key={index}>
+                      <Image
+                        src={img}
+                        alt="Medicine Image 1"
+                        width={250}
+                        height={500}
+                        style={{ width: 250, height: 520 }}
+                        className="overflow-hidden rounded-2xl object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </PartnersAccordionItem>
+          ))}
+        </PartnersAccordion>
       </div>
     </Section>
 
@@ -97,7 +151,8 @@ const PartnersPage: Page = () => (
 
     <Section>
       <HighlightedTitle>
-        Какие проблемы пользователей решает ailergik
+        Какие проблемы <br />
+        пользователей решает ailergik
       </HighlightedTitle>
 
       <Spacer y="3xl" />
@@ -115,13 +170,34 @@ const PartnersPage: Page = () => (
       <Spacer y="3xl" />
 
       <div className="flex flex-col">
-        {services.map(card => (
-          <ServiceCard
-            key={card.id}
-            {...card}
-            className="rounded-none border-b py-10 first:pt-0 last:border-0 last:pb-0"
-          />
-        ))}
+        <ServiceAccordion defaultValue={[topics[0]?.id || '']}>
+          {services.map(card => (
+            <ServiceAccordionItem
+              value={card.id}
+              key={card.id}
+              header={<ServiceCard key={card.id} {...card} />}
+            >
+              <Spacer y="xl" />
+              <div className="grid grid-cols-2 grid-rows-2 gap-20">
+                {card.content.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex border-l-2 border-l-[#9ED8F6]"
+                  >
+                    <div className="ml-5 flex flex-col items-start gap-y-5">
+                      <h5 className="font-helveticaMedium text-sm uppercase">
+                        {item.title}
+                      </h5>
+                      <p className="font-helveticaLight text-base leading-5">
+                        {item.text}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </ServiceAccordionItem>
+          ))}
+        </ServiceAccordion>
       </div>
     </Section>
 
@@ -149,6 +225,9 @@ const PartnersPage: Page = () => (
 
     <Section id={navigation.join.id}>
       <JoinCard />
+    </Section>
+    <Section id={navigation.contacts.id}>
+      <ContactsCard />
     </Section>
   </main>
 )
