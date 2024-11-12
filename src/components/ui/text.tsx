@@ -19,6 +19,7 @@ const Text = ({
   children,
   lineClamp,
   className,
+  highlight = false,
   font = 'gilroy',
   bold = false,
   inline = false,
@@ -40,6 +41,7 @@ const Text = ({
         size,
         color,
         inline,
+        highlight,
         gradient,
         lineClamp,
         uppercase,
@@ -55,6 +57,9 @@ const Title = (props: TextProps) => <Text uppercase {...props} />
 
 const textVariants = cva('leading-tight flex-none', {
   variants: {
+    highlight: {
+      true: 'after:absolute after:bottom-0 after:left-2 after:-z-10 after:h-[10px] after:w-0 after:bg-[#9ED8F6] after:rounded-md after:transition-[width] after:duration-300 hover:after:w-[95%]',
+    },
     color: {
       inherit: '',
 
@@ -112,6 +117,7 @@ const textVariants = cva('leading-tight flex-none', {
     font: 'gilroy',
     lineClamp: 'none',
 
+    highlight: false,
     bold: false,
     inline: false,
     gradient: false,

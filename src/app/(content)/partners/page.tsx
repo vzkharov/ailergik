@@ -31,6 +31,7 @@ import {
   ServiceAccordionItem,
 } from './components/service-accordion'
 import { ContactsCard } from './components/contacts-card'
+import { OrganizationCopyright } from '~/components/organization-copyright'
 
 const title = 'Приглашаем компании и врачей к  сотрудничеству!'
 const subtitle =
@@ -230,9 +231,7 @@ const PartnersPage: Page = () => (
       <ContactsCard />
     </Section>
     <footer>
-      <h5 className="font-gilroy text-[10px] leading-5">
-        Copyright 2024 © ООО “Экселлент Софт” УНП 193682290
-      </h5>
+      <OrganizationCopyright />
     </footer>
   </main>
 )
