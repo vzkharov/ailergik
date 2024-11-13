@@ -4,8 +4,8 @@ import { Image } from '~/components/ui/image'
 const ContactsCard = () => (
   <div>
     <div className="rounded-[35px] bg-[#9ED8F633]/30">
-      <div className="flex w-full flex-col items-center justify-center px-4 py-32">
-        <h3 className="mb-10 max-w-[700px] text-center font-helveticaMedium text-4xl uppercase">
+      <div className="flex w-full flex-col items-center justify-center px-3 py-24 md:py-32">
+        <h3 className="mb-10 max-w-[700px] text-center uppercase">
           наши контакты
         </h3>
 

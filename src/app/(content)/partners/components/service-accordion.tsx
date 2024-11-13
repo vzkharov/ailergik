@@ -2,60 +2,63 @@ import { cn } from '~/lib/utils'
 import type { StyleProps, ReactChildren } from '~/lib/types'
 
 import {
-  Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-  AccordionCloseIcon,
 } from '~/components/ui/accordion'
-import { Spacer } from '~/components/ui/spacer'
+import { ServiceCard } from './service-card'
 
-type ServiceAccordionProps = StyleProps & {
-  children: ReactChildren
-  defaultValue?: string[]
-}
-
-const ServiceAccordion = ({
-  children,
-  className,
-  defaultValue,
-  ...props
-}: ServiceAccordionProps) => (
-  <Accordion
-    {...props}
-    type="multiple"
-    className={cn('space-y-2', className)}
-    defaultValue={defaultValue}
-  >
-    {children}
-  </Accordion>
-)
-
-type ServiceAccordionItemProps = {
-  value: string
-  header: ReactChildren
+type ServiceAccordionItemProps = StyleProps & {
+  id: string
+  href: string
+  img: string
+  title: string
+  content: Content[]
   children?: ReactChildren
 }
 
+type Content = {
+  title: string
+  text: string
+}
+
 const ServiceAccordionItem = ({
-  value,
-  header,
+  id,
+  img,
+  title,
+  content,
+  className,
   children,
 }: ServiceAccordionItemProps) => (
   <AccordionItem
-    id={value}
-    value={value}
-    className="rounded-none border-b py-10 first:pt-0 last:border-0 last:pb-0"
+    id={id}
+    value={id}
+    className={cn(
+      'rounded-none border-b py-10 first:pt-0 last:border-0 last:pb-0',
+      className,
+    )}
   >
     <AccordionTrigger className="group/accordion-trigger">
-      {header}
-      <AccordionCloseIcon></AccordionCloseIcon>
+      <ServiceCard title={title} img={img} />
     </AccordionTrigger>
-    <AccordionContent className="max-md:px-6">
+    <AccordionContent>
+      <div className="grid gap-5 md:mt-10 md:grid-cols-2 md:grid-rows-2 md:gap-20">
+        {content.map((item, index) => (
+          <div key={index} className="flex border-l-2 border-l-[#9ED8F6]">
+            <div className="ml-5 flex flex-col items-start gap-y-5">
+              <h5 className="font-helveticaMedium text-sm uppercase">
+                {item.title}
+              </h5>
+              <p className="font-helveticaLight text-xs leading-5 md:text-base">
+                {item.text}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
       {children}
-      <Spacer y="xl" />
     </AccordionContent>
   </AccordionItem>
 )
 
-export { ServiceAccordion, ServiceAccordionItem }
+export { ServiceAccordionItem }

@@ -23,7 +23,7 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        'flex flex-1 items-center justify-between py-4 font-medium transition-all',
+        'flex flex-1 items-center justify-between py-4 font-medium',
         className,
       )}
       {...props}
@@ -40,12 +40,14 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    className="group/accordion-content overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
     {...props}
   >
     <div className={cn('pb-4 pt-0', className)}>{children}</div>
   </AccordionPrimitive.Content>
 ))
+
+AccordionContent.displayName = AccordionPrimitive.Content.displayName
 
 const AccordionCloseIcon = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
@@ -56,9 +58,7 @@ const AccordionCloseIcon = React.forwardRef<
   </span>
 ))
 
-AccordionCloseIcon.displayName = AccordionPrimitive.Trigger.displayName
-
-AccordionContent.displayName = AccordionPrimitive.Content.displayName
+AccordionCloseIcon.displayName = '@ailergik/accordion/control'
 
 export {
   Accordion,
