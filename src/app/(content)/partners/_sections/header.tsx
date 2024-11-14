@@ -1,15 +1,16 @@
 import { cn } from '~/lib/utils'
 
-import { Logo } from '~/components/logo'
-
 import { navigation } from '../_data/links'
 
+import { Logo } from '~/components/logo'
 import { Title } from '~/components/ui/text'
+import { MenuButton } from '~/components/(buttons)/menu-button'
 
 const Header = () => (
   <header className="flex w-full items-center rounded-full bg-white px-6 py-3 text-sm">
-    <Logo />
-    <ul className="ml-auto flex items-center">
+    <Logo className="flex-1 self-center max-md:text-center" />
+
+    <ul className="ml-auto flex items-center max-md:hidden">
       {[
         navigation.benefits,
         navigation.sections,
@@ -49,6 +50,10 @@ const Header = () => (
         </a>
       </li>
     </ul>
+
+    <div className="md:hidden">
+      <MenuButton />
+    </div>
   </header>
 )
 

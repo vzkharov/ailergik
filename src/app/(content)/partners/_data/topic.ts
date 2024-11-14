@@ -122,3 +122,5 @@ const topics = [
 ] satisfies PartnerTopic[]
 
 export { topics }
+export type { Content }
+export type { PartnerTopic }

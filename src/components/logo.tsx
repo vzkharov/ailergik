@@ -12,9 +12,7 @@ const Logo = ({ className, ...props }: StyleProps) => (
       className,
     )}
   >
-    <h2 className="translate-y-0.5 font-helveticaBold text-xl uppercase">
-      AiLergik
-    </h2>
+    <h2 className="translate-y-0.5 font-helveticaBold text-xl">AiLERGIK</h2>
   </Link>
 )
 

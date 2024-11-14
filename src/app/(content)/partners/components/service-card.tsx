@@ -20,9 +20,9 @@ const ServiceCard = ({ img, title, style, className }: ServiceCardProps) => (
     )}
   >
     <div className="flex flex-col">
-      <h6 className="mb-5 max-w-[550px] font-helveticaMedium text-2xl leading-tight md:mb-auto md:mt-auto md:text-[30px]">
+      <h3 className="mb-5 max-w-[550px] text-start leading-tight md:mb-auto md:mt-auto">
         {title}
-      </h6>
+      </h3>
       <DetailButton className="w-fit group-[[data-state=open]]/accordion-trigger:invisible" />
     </div>
     <Image

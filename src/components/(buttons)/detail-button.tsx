@@ -14,4 +14,5 @@ const DetailButton = ({
     {rotate ? <ArrowIcon className="-rotate-90" /> : <ArrowIcon />}
   </Button>
 )
+
 export { DetailButton }

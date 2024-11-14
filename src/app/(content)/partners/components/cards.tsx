@@ -10,8 +10,8 @@ type CardProps = StyleProps & {
 const Card = ({ children, className }: CardProps) => (
   <article
     className={cn(
-      'absolute bottom-5 left-5 bg-[#E9EEF2CC]/80 backdrop-blur-sm',
-      'flex max-w-[480px] flex-col gap-y-4 rounded-2xl p-6 leading-tight',
+      'absolute bottom-2 left-2 bg-[#E9EEF2CC]/80 backdrop-blur-sm',
+      'flex max-w-[480px] flex-col gap-y-4 rounded-3xl p-6 leading-tight',
       className,
     )}
   >
@@ -19,27 +19,24 @@ const Card = ({ children, className }: CardProps) => (
   </article>
 )
 
-type CardTitleProps = ReactPropsOf<'h6'>
+type CardTitleProps = ReactPropsOf<'h3'>
 
 const CardTitle = ({ children, className, ...props }: CardTitleProps) => (
-  <h5
-    {...props}
-    className={cn('font-helveticaMedium text-3xl leading-none', className)}
-  >
+  <h3 {...props} className={cn('', className)}>
     {children}
-  </h5>
+  </h3>
 )
 
-type CardDescriptionProps = ReactPropsOf<'p'>
+type CardDescriptionProps = ReactPropsOf<'h5'>
 
 const CardDescription = ({
   children,
   className,
   ...props
 }: CardDescriptionProps) => (
-  <p {...props} className={cn('max-w-lg font-helveticaLight', className)}>
+  <h5 {...props} className={cn('max-w-lg', className)}>
     {children}
-  </p>
+  </h5>
 )
 
 export { Card, CardTitle, CardDescription }

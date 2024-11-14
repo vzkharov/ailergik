@@ -20,7 +20,8 @@ const Text = ({
   lineClamp,
   className,
   highlight = false,
-  font = 'gilroy',
+  highlighted = false,
+  font = 'helvetica',
   bold = false,
   inline = false,
   gradient = false,
@@ -42,6 +43,7 @@ const Text = ({
         color,
         inline,
         highlight,
+        highlighted,
         gradient,
         lineClamp,
         uppercase,
@@ -59,6 +61,9 @@ const textVariants = cva('leading-tight flex-none', {
   variants: {
     highlight: {
       true: 'after:absolute after:bottom-0 after:left-2 after:-z-10 after:h-[10px] after:w-0 after:bg-[#9ED8F6] after:rounded-md after:transition-[width] after:duration-300 hover:after:w-[95%]',
+    },
+    highlighted: {
+      true: 'after:content-[""] after:absolute after:bottom-0 after:-right-2 after:-z-10 after:h-6 max-md:after:h-4 after:w-[96%] after:bg-[#9ED8F6] after:rounded-md',
     },
     color: {
       inherit: '',
@@ -96,6 +101,7 @@ const textVariants = cva('leading-tight flex-none', {
       gilroy: 'font-gilroy',
       ['gilroy-bold']: 'font-gilroy-bold',
       bebas: 'font-bebas leading-none',
+      helvetica: 'font-helveticaMedium',
     },
 
     bold: {
@@ -114,10 +120,11 @@ const textVariants = cva('leading-tight flex-none', {
   defaultVariants: {
     size: undefined,
     color: undefined,
-    font: 'gilroy',
+    font: 'helvetica',
     lineClamp: 'none',
 
     highlight: false,
+    highlighted: false,
     bold: false,
     inline: false,
     gradient: false,
