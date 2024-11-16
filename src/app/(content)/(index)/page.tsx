@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Page } from '~/lib/types'
 
 import { fetchTopics } from '~/controllers/topics'
+import { SectionDelete } from './_sections/section-delete'
 
 const Home: Page = async () => {
   const topics = await fetchTopics()
@@ -22,6 +23,9 @@ const Home: Page = async () => {
           </li>
         ))}
       </ul>
+
+      {/* Взять из нее что нужно и удалить */}
+      <SectionDelete />
     </div>
   )
 }
