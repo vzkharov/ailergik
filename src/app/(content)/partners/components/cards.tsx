@@ -11,7 +11,7 @@ const Card = ({ children, className }: CardProps) => (
   <article
     className={cn(
       'absolute bottom-2 left-2 bg-[#E9EEF2CC]/80 backdrop-blur-sm',
-      'flex max-w-[480px] flex-col gap-y-4 rounded-3xl p-6 leading-tight',
+      'flex max-w-[500px] flex-col gap-y-4 rounded-3xl p-6 leading-tight',
       className,
     )}
   >
