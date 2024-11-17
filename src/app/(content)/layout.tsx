@@ -6,6 +6,8 @@ import type { Layout } from '~/lib/types'
 import { rootMetadata } from '~/lib/metadata'
 import { fontsClassName } from '~/lib/fonts'
 
+import { Footer } from '~/components/footer'
+
 import { Providers } from './providers'
 
 const Root: Layout = ({ children }) => (
@@ -16,7 +18,13 @@ const Root: Layout = ({ children }) => (
     suppressContentEditableWarning
   >
     <body className={fontsClassName}>
-      <Providers>{children}</Providers>
+      <Providers>
+        <main className="gap-y-2xl pt-md container flex flex-col">
+          {children}
+        </main>
+      </Providers>
+      <div className="h-16" />
+      <Footer />
     </body>
   </html>
 )

@@ -4,84 +4,114 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
-    --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
-    --primary: 220.9 39.3% 11%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 224 71.4% 4.1%;
-    --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-  }
+    /* Default background color of <body />...etc */
+    --background: 0 0% 100%; /** hsla(0, 0%, 100%, 1) */
+    --foreground: 220 60% 20%; /** hsla(220, 60%, 20%, 1) */
 
-  .dark {
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 20% 98%;
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 20% 98%;
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 210 20% 98%;
-    --primary-foreground: 220.9 39.3% 11%;
-    --secondary: 215 27.9% 16.9%;
-    --secondary-foreground: 210 20% 98%;
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
-    --accent: 215 27.9% 16.9%;
-    --accent-foreground: 210 20% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --ring: 216 12.2% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    /* Background color for popovers such as <DropdownMenu />, <HoverCard />, <Popover /> */
+    --popover: 207 26% 93%; /** hsla(207, 26%, 93%, 0.8); */
+    --popover-foreground: 220 60% 20%;
+
+    /* Primary colors for <Button /> */
+    --primary: 220 60% 20%; /** hsla(220, 60%, 20%, 1) */
+    --primary-foreground: 0 0% 100%; /** hsla(0, 0%, 100%, 1) */
+
+    /* Secondary colors for <Button /> */
+    /* --secondary: 220 14.3% 95.9%; */
+    /* --secondary-foreground: 220.9 39.3% 11%; */
+
+    /* Muted backgrounds such as <TabsList />, <Skeleton /> and <Switch /> */
+    --muted: 200 33% 95%; /** hsla(200, 33%, 95%, 1) */
+    --muted-foreground: 221 22% 53%; /** hsla(221, 22%, 53%, 1) */
+
+    /* Used for accents such as hover effects on <DropdownMenuItem>, <SelectItem>...etc */
+    --accent: 220 14.3% 95.9%; /** hsla(200, 83%, 79%, 1) */
+    --accent-foreground: 220.9 39.3% 11%; /** hsla(220, 60%, 20%, 1) */
+
+    /* Used for destructive actions such as <Button variant="destructive"> */
+    --destructive: 338 97% 46%; /** hsla(338, 97%, 46%, 1) */
+    --destructive-foreground: 200 33% 95%; /** hsla(200, 33%, 95%, 1) */
+
+    /* Custom topic background color that loaded from cms */
+    /* --topic: 220 14.3% 95.9%; * hsla(200, 83%, 79%, 1) */
+
+    /* Link text */
+    --link: 237.3 83.18% 58.04%;
+
+    /* Default border color */
+    --border: 240 3% 85%; /** hsla(240, 3%, 85%, 1) */
+
+    /* Background color for inputs such as <Input />, <Select />, <Textarea /> */
+    --input: 220 60% 20%; /** hsla(0, 0%, 100%, 1) */
+
+    /* Used for focus ring */
+    --ring: 220 60% 20%; /** hsla(220, 60%, 20%, 1) */
+
+    /* Base border radius for card, input and buttons */
+    --radius: 20px;
+
+    /* Spacings used for `m-*` & `p-*` */
+    --indent-xs: 5px;
+    --indent-sm: 10px;
+    --indent-md: 20px;
+    --indent-lg: 25px;
+    --indent-xl: 30px;
+    --indent-2xl: 75px;
+
+    /* Font sizes */
+    --font-xs: 12px;
+    --font-sm: 14px;
+    --font-md: 16px;
+    --font-lg: 20px;
+    --font-xl: 24px;
+    --font-2xl: 32px;
+    --font-3xl: 48px;
+    --font-4xl: 64px;
+
+    /* Font weight */
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-bold: 600;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-medium;
 }
 
 h1 {
-  font-family: var(--font-helvetica-medium);
-  @apply text-3xl md:text-5xl;
+  @apply text-3xl md:text-4xl;
 }
 
 h2 {
-  font-family: var(--font-helvetica-medium);
-  @apply text-2xl md:text-4xl;
-}
-
-h3 {
-  font-family: var(--font-helvetica-medium);
   @apply text-2xl md:text-3xl;
 }
 
+h3 {
+  @apply text-xl md:text-2xl;
+}
+
 h4 {
-  font-family: var(--font-helvetica-medium);
   @apply text-2xl;
 }
 
 h5 {
-  font-family: var(--font-helvetica-light);
-  @apply text-base md:text-xl;
+  @apply text-sm font-normal md:text-md;
+}
+
+h6 {
+  @apply text-xl font-normal;
+}
+
+*,
+*:after,
+*:before {
+  @apply box-border;
 }
 
 @layer base {
@@ -89,15 +119,18 @@ h5 {
     @apply border-border;
   }
 
+  *,
+  *:after,
+  *:before {
+    @apply box-border;
+  }
+
   html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 40px;
+    @apply scroll-pt-10 scroll-smooth;
   }
 
   body {
-    @apply container bg-background;
-    font-size: 20px;
     line-height: 1;
-    color: #142850;
+    @apply bg-background font-helvetica text-lg text-foreground;
   }
 }

@@ -18,7 +18,7 @@ const HighlightedTitle = ({
     highlighted
     uppercase
     className={cn(
-      'relative mx-auto block w-fit max-w-[740px] text-center font-helveticaMedium text-2xl max-md:max-w-[300px] md:text-4xl',
+      'relative mx-auto block w-fit max-w-[740px] text-center text-lg font-medium max-md:max-w-[300px] md:text-2xl',
       className,
     )}
   >

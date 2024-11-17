@@ -5,7 +5,13 @@ import { client } from '~/lib/directus/client'
 type SearchParams = {}
 
 const fetchTopics = async (params: SearchParams = {}) =>
-  client.request(readItems('topic', params))
+  client.request(
+    readItems('topic', {
+      filter: params,
+      sort: 'order',
+      fields: ['id', 'color', 'slug', 'name', 'description', { cover: ['*'] }],
+    }),
+  )
 
 const fetchTopicBySlug = (slug: string) =>
   client
@@ -17,5 +23,13 @@ const fetchTopicBySlug = (slug: string) =>
     )
     .then(items => items.at(0))
 
-export { fetchTopics, fetchTopicBySlug }
+const fetchTopicSections = () =>
+  client.request(
+    readItems('topic_section', {
+      fields: ['id', 'name', 'slug', { view: ['value'] }],
+      sort: 'order',
+    }),
+  )
+
+export { fetchTopics, fetchTopicBySlug, fetchTopicSections }
 export type { SearchParams }

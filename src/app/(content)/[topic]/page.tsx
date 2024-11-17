@@ -1,16 +1,16 @@
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 
 import type { Page } from '~/lib/types'
 
 import { fetchTopicBySlug } from '~/controllers/topics'
-
-import { TopicPosts } from './_components/topic-posts'
 
 type Params = {
   topic: string
 }
 
 const TopicPage: Page<Params> = async props => {
+  redirect('/')
+
   const params = await props.params
 
   const slug = params.topic
@@ -23,11 +23,11 @@ const TopicPage: Page<Params> = async props => {
 
   return (
     <div>
-      <style className="hidden">{`:root {--accent-color: ${topic.color}}`}</style>
+      {/* <StyleAccent color={topic.color} /> */}
       <pre className="font-mono">{JSON.stringify(topic, null, 2)}</pre>
       <h1 className="text-_accent my-4 text-4xl font-bold">{topic?.name}</h1>
 
-      <TopicPosts topicId={topic.id} />
+      {/* <TopicPosts topicId={topic.id} /> */}
     </div>
   )
 }

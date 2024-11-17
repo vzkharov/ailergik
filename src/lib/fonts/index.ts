@@ -1,63 +1,61 @@
 import localFont from 'next/font/local'
 
-const geistSans = localFont({
-  src: './geist.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-})
-const geistMono = localFont({
-  src: './geist-mono.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-})
-
 const gilroy = localFont({
-  src: './gilroy-regular.ttf',
   display: 'swap',
   variable: '--font-gilroy',
+  src: [
+    {
+      path: './gilroy-normal.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './gilroy-medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './gilroy-bold.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+  ],
 })
 
-const helveticaLight = localFont({
-  src: './HelveticaNeueCyr-Light.woff',
-  variable: '--font-helvetica-light',
-  weight: '100 900',
-})
-
-const helveticaItalicLight = localFont({
-  src: './HelveticaNeueCyr-ItalicLight.woff',
-  variable: '--font-helvetica-italic-light',
-  weight: '100 900',
-})
-
-const helveticaMedium = localFont({
-  src: './HelveticaNeueCyr-Medium.woff',
-  variable: '--font-helvetica-medium',
-  weight: '100 900',
-})
-
-const helveticaBold = localFont({
-  src: './HelveticaNeueCyr-Bold.woff',
-  variable: '--font-helvetica-bold',
-  weight: '100 900',
+const helvetica = localFont({
+  display: 'swap',
+  variable: '--font-helvetica',
+  src: [
+    {
+      path: './helvetica-normal.woff',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './helvetica-normal-light.woff',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: './helvetica-medium.woff',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './helvetica-bold.woff',
+      style: 'normal',
+      weight: '700',
+    },
+  ],
 })
 
 const vars = {
-  mono: geistMono.variable,
-  geist: geistSans.variable,
-  helveticaLight: helveticaLight.variable,
-  helveticaMedium: helveticaMedium.variable,
-  helveticaBold: helveticaBold.variable,
-  helveticaItalicLight: helveticaItalicLight.variable,
+  helvetica: helvetica.variable,
   gilroy: gilroy.variable,
 }
 
 const fontsClassName = [
-  geistSans.variable,
-  geistMono.variable,
-  helveticaLight.variable,
-  helveticaMedium.variable,
-  helveticaBold.variable,
-  helveticaItalicLight.variable,
+  helvetica.variable,
   gilroy.variable,
   'antialiased',
 ].join(' ')

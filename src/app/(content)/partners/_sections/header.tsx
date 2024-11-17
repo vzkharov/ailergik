@@ -8,7 +8,7 @@ import { MenuButton } from '~/components/(buttons)/menu-button'
 
 const Header = () => (
   <header className="flex w-full items-center rounded-full bg-white px-6 py-3 text-sm">
-    <Logo className="flex-1 self-center max-md:text-center" />
+    <Logo href="/partners" className="flex-1 self-center max-md:text-center" />
 
     <ul className="ml-auto flex items-center max-md:hidden">
       {[

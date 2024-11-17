@@ -3,16 +3,24 @@ import Link from 'next/link'
 import { cn } from '~/lib/utils'
 import type { StyleProps } from '~/lib/types'
 
-const Logo = ({ className, ...props }: StyleProps) => (
+type LogoProps = StyleProps & {
+  href?: string
+}
+
+const Logo = ({ className, href = '/', ...props }: LogoProps) => (
   <Link
     {...props}
-    href="/partners"
+    href={href}
     className={cn(
-      'relative block h-fit w-max flex-none select-none',
+      'group/logo relative block h-fit w-max flex-none select-none',
+      'font-gilroy text-lg font-bold',
       className,
     )}
   >
-    <h2 className="translate-y-0.5 font-helveticaBold text-xl">AiLERGIK</h2>
+    <span className="transition-colors group-hover/logo:text-[#6ED6B2]">
+      Ai
+    </span>
+    LERGIK
   </Link>
 )
 

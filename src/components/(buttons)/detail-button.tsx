@@ -5,13 +5,18 @@ import { Button, type ButtonProps } from '~/components/ui/button'
 
 const DetailButton = ({
   className,
-  children = 'ПОДРОБНЕЕ',
   rotate = false,
+  variant = 'outline',
+  children = 'ПОДРОБНЕЕ',
   ...props
-}: Omit<ButtonProps, 'variant'> & { rotate?: boolean }) => (
-  <Button {...props} variant="outline" className={cn('w-fit', className)}>
-    <div className="translate-y-px uppercase">{children}</div>
-    {rotate ? <ArrowIcon className="-rotate-90" /> : <ArrowIcon />}
+}: ButtonProps & { rotate?: boolean }) => (
+  <Button
+    {...props}
+    variant={variant}
+    className={cn('group/detail w-fit gap-x-sm', className)}
+    icon={<ArrowIcon className={cn('', rotate ? '-rotate-90' : '')} />}
+  >
+    {children}
   </Button>
 )
 

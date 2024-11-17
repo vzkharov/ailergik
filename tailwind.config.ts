@@ -14,13 +14,48 @@ const config = {
         '2xl': '1192px',
       },
     },
+    fontWeight: {
+      normal: 'var(--font-normal)',
+      medium: 'var(--font-medium)',
+      bold: 'var(--font-bold)',
+    },
+    fontSize: {
+      xs: 'var(--font-xs)',
+      sm: 'var(--font-sm)',
+      md: 'var(--font-md)',
+      lg: 'var(--font-lg)',
+      xl: 'var(--font-xl)',
+      '2xl': 'var(--font-2xl)',
+      '3xl': 'var(--font-3xl)',
+      '4xl': 'var(--font-4xl)',
+    },
+    borderRadius: {
+      none: '0px',
+      xs: 'calc(var(--radius) - 4px)',
+      sm: 'calc(var(--radius) - 2px)',
+      md: 'var(--radius)',
+      lg: 'calc(var(--radius) + 2px)',
+      xl: 'calc(var(--radius) + 4px)',
+      full: '999px',
+    },
     extend: {
+      spacing: {
+        0: '0px',
+        xs: 'var(--indent-xs)',
+        sm: 'var(--indent-sm)',
+        md: 'var(--indent-md)',
+        lg: 'var(--indent-lg)',
+        xl: 'var(--indent-xl)',
+        '2xl': 'var(--indent-2xl)',
+      },
+
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        topic: 'var(--topic)',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -49,22 +84,10 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-        // cms
-        _accent: 'var(--accent-color)',
       },
       fontFamily: {
         gilroy: 'var(--font-gilroy)',
-        sans: 'var(--font-geist-sans)',
-        mono: 'var(--font-geist-mono)',
-        helveticaLight: 'var(--font-helvetica-light)',
-        helveticaMedium: 'var(--font-helvetica-medium)',
-        helveticaBold: 'var(--font-helvetica-bold)',
-        helveticaItalicLight: 'var(--font-helvetica-italic-light)',
-      },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        helvetica: 'var(--font-helvetica)',
       },
       keyframes: {
         'accordion-down': {

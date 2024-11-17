@@ -1,32 +1,29 @@
-import Link from 'next/link'
-
 import { Page } from '~/lib/types'
 
 import { fetchTopics } from '~/controllers/topics'
-import { SectionDelete } from './_sections/section-delete'
+
+import { FeedForm } from '~/modules/feed-form'
+import { TopicTape } from '~/modules/topic-tape'
+import { BentoTopics } from '~/modules/bento-topics'
+import { SocialBanner } from '~/modules/social-banner'
+
+import { WelcomeSection } from './_sections/welcome-section'
 
 const Home: Page = async () => {
   const topics = await fetchTopics()
-  return (
-    <div>
-      <h1 className="mb-4 font-sans text-4xl font-bold">Home Page</h1>
-      <ul>
-        {topics.map(topic => (
-          <li key={topic.id}>
-            <Link
-              href={'/' + topic.slug}
-              style={{ color: topic.color }}
-              className="font-[Helvetica] font-bold capitalize"
-            >
-              {topic.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
 
-      {/* Взять из нее что нужно и удалить */}
-      <SectionDelete />
-    </div>
+  return (
+    <>
+      <WelcomeSection />
+      <BentoTopics />
+      <SocialBanner />
+
+      {topics.slice(0, 2).map(topic => (
+        <TopicTape key={topic.slug} topic={topic} />
+      ))}
+
+      <FeedForm />
+    </>
   )
 }
 

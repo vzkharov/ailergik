@@ -12,11 +12,11 @@ const nextConfig: NextConfig = {
     }
 
     return [
-      {
-        source: '/:path((?!partners).*)',
-        destination: '/partners',
-        permanent: true,
-      },
+      // {
+      //   source: '/:path((?!partners).*)',
+      //   destination: '/partners',
+      //   permanent: true,
+      // },
     ]
   },
   images: {

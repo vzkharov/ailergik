@@ -7,11 +7,20 @@ export interface Customer {
 	date_created?: string | null;
 }
 
+export interface Faq {
+	/** @required */
+	id: number;
+	/** @required */
+	title: string;
+	/** @required */
+	content: string;
+	image?: DirectusFile | string | null;
+}
+
 export interface Post {
 	/** @required */
 	id: string;
 	status?: 'published' | 'draft' | 'archived';
-	sort?: number | null;
 	user_created?: DirectusUser | string | null;
 	date_created?: string | null;
 	user_updated?: DirectusUser | string | null;
@@ -24,12 +33,58 @@ export interface Post {
 	topic: Topic | string;
 	/** @required */
 	section: TopicSection | string;
-	/** @required */
-	description: string;
+	description?: string | null;
 	/** @required */
 	slug: string;
 	/** @required */
 	cover: DirectusFile | string;
+}
+
+export interface PostView {
+	/** @required */
+	id: number;
+	/** @required */
+	value: string;
+}
+
+export interface SeoDetail {
+	/** @required */
+	id: number;
+	meta_title?: string | null;
+	meta_description?: string | null;
+	meta_keywords?: string | null;
+	schema_type?: `` | 'article' | 'book' | 'course' | 'event' | 'jobposting' | 'music' | 'product' | 'recipe' | 'restaurant' | 'video' | 'person' | 'service' | 'software' | null;
+	meta_robots?: any | null;
+	meta_social?: string | null;
+	facebook_image?: DirectusFile | string | null;
+	twitter_image?: DirectusFile | string | null;
+}
+
+export interface SeoRedirection {
+	/** @required */
+	id: number;
+	date_created?: string | null;
+	date_updated?: string | null;
+	status?: string | null;
+	old_url?: string | null;
+	new_url?: string | null;
+}
+
+export interface SeoSetting {
+	/** @required */
+	key: string;
+	value?: Record<string, any> | null;
+}
+
+export interface Social {
+	/** @required */
+	id: number;
+	/** @required */
+	url: string;
+	/** @required */
+	name: string;
+	/** @required */
+	icon: DirectusFile | string;
 }
 
 export interface Topic {
@@ -41,6 +96,12 @@ export interface Topic {
 	color: string;
 	/** @required */
 	slug: string;
+	/** @required */
+	cover: DirectusFile | string;
+	/** @required */
+	order: number;
+	/** @required */
+	description: string;
 }
 
 export interface TopicSection {
@@ -50,6 +111,10 @@ export interface TopicSection {
 	name: string;
 	/** @required */
 	slug: string;
+	/** @required */
+	order: number;
+	/** @required */
+	view: PostView | string;
 }
 
 export interface DirectusActivity {
@@ -446,7 +511,13 @@ export interface DirectusExtension {
 
 export interface Schema {
 	customers: Customer[];
+	faq: Faq[];
 	post: Post[];
+	post_view: PostView[];
+	seo_detail: SeoDetail[];
+	seo_redirection: SeoRedirection[];
+	seo_setting: SeoSetting[];
+	social: Social[];
 	topic: Topic[];
 	topic_section: TopicSection[];
 	directus_activity: DirectusActivity[];
