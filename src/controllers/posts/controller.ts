@@ -43,9 +43,12 @@ const fetchPostBySlug = (slug: string) =>
         },
       }),
     )
-    .then(posts => posts[0])
+    .then(posts => posts.at(0))
 
-type Post = Awaited<ReturnType<typeof fetchPostBySlug>>
+type Post = Exclude<
+  Awaited<ReturnType<typeof fetchPostBySlug>>,
+  null | undefined
+>
 type PostId = Awaited<ReturnType<typeof fetchPostIds>>
 type PostPreview = Awaited<ReturnType<typeof fetchPosts>>[number]
 
