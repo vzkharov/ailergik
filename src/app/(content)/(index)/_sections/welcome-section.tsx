@@ -10,7 +10,7 @@ const WelcomeSection = () => {
         loading="eager"
         src="/welcome.png"
         width={1128}
-        height={572}
+        height={680}
         className="max-md:rounded-3xl max-md:h-[450px]"
       />
 
