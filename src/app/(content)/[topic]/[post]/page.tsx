@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+import { DOMAIN_URL } from '~/env'
 import type { Page } from '~/lib/types'
 
 import { fetchPostBySlug, fetchPosts } from '~/controllers/posts'
@@ -97,7 +98,7 @@ export const generateMetadata = async (props: {
     notFound()
   }
 
-  const title = post.name
+  const title = [post.name, post.topic.name].join(' • ')
   const description = post.description ?? undefined
   const cover = {
     alt: title,
@@ -109,6 +110,9 @@ export const generateMetadata = async (props: {
   return {
     title,
     description,
+    alternates: {
+      canonical: new URL([post.topic.slug, post.slug].join('/'), DOMAIN_URL),
+    },
     twitter: {
       card: 'summary_large_image',
       site: 'allergik',

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+import { DOMAIN_URL } from '~/env'
 import type { Page } from '~/lib/types'
 
 import {
@@ -45,7 +46,11 @@ const TopicPage: Page<Params> = async props => {
           className="py-md"
         />
 
-        <DirectusImage image={topic.cover} className="h-[385px] rounded-md" />
+        <DirectusImage
+          loading="eager"
+          image={topic.cover}
+          className="h-[385px] rounded-md"
+        />
 
         <h1 className="absolute bottom-0 left-0 rounded-tr-md bg-[#F7F7F9] pl-2 pr-8 pt-8 text-4xl font-normal uppercase max-md:-bottom-2 max-md:left-0 max-md:text-[19px]">
           [ {topic.name} ]
@@ -91,7 +96,7 @@ export const generateMetadata = async (props: {
     notFound()
   }
 
-  const title = topic.name
+  const title = [topic.name, topic.description].join(' - ')
   const description = topic.description ?? undefined
   const cover = {
     alt: title,
@@ -103,6 +108,9 @@ export const generateMetadata = async (props: {
   return {
     title,
     description,
+    alternates: {
+      canonical: new URL(topic.slug, DOMAIN_URL),
+    },
     twitter: {
       card: 'summary_large_image',
       site: 'allergik',
