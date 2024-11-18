@@ -1,45 +1,46 @@
+import Link from 'next/link'
+
 import { cn } from '~/lib/utils'
 import type { StyleProps } from '~/lib/types'
+import type { DirectusFile } from '~/lib/directus/_generated'
 
-import { Image } from '~/components/ui/image'
 import { DetailButton } from '~/components/(buttons)/detail-button'
+import { DirectusImage } from '~/components/(images)/directus-image'
 
 type BentoCardProps = StyleProps & {
+  href?: string
   title: string
   description?: string
-  img: string
+  image: DirectusFile
   button?: boolean
-  imageClassName: string
 }
 
 const BentoCard = ({
-  img,
+  href,
   title,
-  description,
-  button = false,
+  image,
   style,
-  imageClassName,
   className,
+  description,
 }: BentoCardProps) => (
   <article
     style={style}
-    className={cn(
-      'w-full space-y-4 overflow-hidden',
-      className,
-      imageClassName,
-    )}
+    className={cn('w-min space-y-md overflow-hidden', className)}
   >
-    <Image
-      src={img}
-      alt={title}
-      className={cn('rounded-lg object-cover', imageClassName)}
+    <DirectusImage
+      image={image}
+      className={cn('h-[360px] w-auto max-w-fit rounded-lg object-cover')}
     />
 
-    <h3> {title}</h3>
+    <h3 className="max-w-fit">{title}</h3>
     {description ? (
-      <p className="font-helveticaLight text-base md:text-xl">{description}</p>
+      <p className="text-base font-normal md:text-xl">{description}</p>
     ) : null}
-    {button ? <DetailButton className="w-fit">Подробнее</DetailButton> : null}
+    {href ? (
+      <Link href={href} className="block">
+        <DetailButton className="w-fit">Подробнее</DetailButton>
+      </Link>
+    ) : null}
   </article>
 )
 

@@ -11,6 +11,7 @@ import { Button } from '~/components/ui/button'
 import { Tabs, TabsList, TabsTrigger } from '~/components/ui/tabs'
 
 import { BigCard } from '~/components/(cards)/big-card'
+import { BentoCard } from '~/components/(cards)/bento-card'
 import { CoverCard } from '~/components/(cards)/cover-card'
 import { SmallCard } from '~/components/(cards)/small-card'
 
@@ -116,7 +117,7 @@ const SectionTape = async ({
     <div id={topic.slug + '-' + section.slug} className={styles.section.root}>
       <h5 className={styles.section.title}>{section.name}</h5>
       <div className={styles.section.layout[section.view]}>
-        {posts.slice(0, itemsCount).map(post => {
+        {posts.slice(0, itemsCount).map((post, idx) => {
           const href = ['', post.topic.slug, post.slug].join('/')
 
           if (section.view === 'cover') {
@@ -158,6 +159,15 @@ const SectionTape = async ({
           }
 
           if (section.view === 'bento') {
+            return (
+              <BentoCard
+                key={post.slug}
+                href={href}
+                image={post.cover}
+                title={post.name}
+                className={styles.section.bento[idx as 0 | 1 | 2]}
+              />
+            )
           }
 
           return null
@@ -174,11 +184,16 @@ const styles = {
     layout: {
       small: 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg',
       bento:
-        'flex flex-col gap-y-12 md:grid md:grid-cols-2 md:grid-rows-3 md:gap-x-20 md:gap-y-20',
+        'h-fit flex flex-col gap-y-12 md:grid md:grid-cols-2 md:grid-rows-[1fr_1fr_auto] md:gap-x-20 md:gap-y-20',
       big: 'w-full',
       cover: 'w-full',
     } as Record<string, string>,
     item: '',
+    bento: {
+      0: 'row-span-1',
+      1: 'col-start-2 row-span-2 row-start-1 place-self-center',
+      2: 'col-span-1 row-span-2 row-start-2 place-content-center',
+    },
   },
 }
 
