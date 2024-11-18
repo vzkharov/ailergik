@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import type { Page } from '~/lib/types'
@@ -21,7 +22,6 @@ type Params = {
 
 const TopicPage: Page<Params> = async props => {
   const params = await props.params
-
   const slug = params.topic
 
   const topic = await fetchTopicBySlug(slug)
@@ -77,6 +77,46 @@ export const generateStaticParams = async (): Promise<Params[]> => {
   const params = topics.map(topic => ({ topic: topic.slug }))
 
   return params
+}
+
+export const generateMetadata = async (props: {
+  params: Promise<Params>
+}): Promise<Metadata> => {
+  const params = await props.params
+  const slug = params.topic
+
+  const topic = await fetchTopicBySlug(slug)
+
+  if (!topic) {
+    notFound()
+  }
+
+  const title = topic.name
+  const description = topic.description ?? undefined
+  const cover = {
+    alt: title,
+    width: topic.cover.width ?? undefined,
+    height: topic.cover.height ?? undefined,
+    url: ['https://cms.allergik.by/assets', topic.cover.id].join('/'),
+  }
+
+  return {
+    title,
+    description,
+    twitter: {
+      card: 'summary_large_image',
+      site: 'allergik',
+      images: [cover],
+    },
+    openGraph: {
+      title,
+      description,
+      images: [cover],
+      type: 'article',
+      section: topic.name,
+      tags: [topic.name],
+    },
+  }
 }
 
 export default TopicPage

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import type { Page } from '~/lib/types'
@@ -82,6 +83,47 @@ export const generateStaticParams = async (): Promise<Params[]> => {
   }))
 
   return params
+}
+
+export const generateMetadata = async (props: {
+  params: Promise<Params>
+}): Promise<Metadata> => {
+  const params = await props.params
+  const slug = params.post
+
+  const post = await fetchPostBySlug(slug)
+
+  if (!post) {
+    notFound()
+  }
+
+  const title = post.name
+  const description = post.description ?? undefined
+  const cover = {
+    alt: title,
+    width: post.cover.width ?? undefined,
+    height: post.cover.height ?? undefined,
+    url: ['https://cms.allergik.by/assets', post.cover.id].join('/'),
+  }
+
+  return {
+    title,
+    description,
+    twitter: {
+      card: 'summary_large_image',
+      site: 'allergik',
+      images: [cover],
+    },
+    openGraph: {
+      title,
+      description,
+      images: [cover],
+      type: 'article',
+      section: post.topic.name,
+      publishedTime: post.date_created ?? undefined,
+      tags: [post.topic.name, post.section.name],
+    },
+  }
 }
 
 export default PostPage
