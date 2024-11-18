@@ -29,13 +29,15 @@ const components: MDXComponents = {
     </ol>
   ),
   blockquote: ({ children }) => (
-    <blockquote className="my-md rounded-xs bg-topic px-6 py-4">
+    <blockquote className="relative my-md overflow-hidden rounded-xs px-6 py-4">
+      <div className="absolute inset-0 -z-10 bg-topic opacity-50" />
       {children}
     </blockquote>
   ),
   p: ({ children }) => (
     <p className="inline text-md leading-normal">{children}</p>
   ),
+  strong: ({ children }) => <strong className="font-medium">{children}</strong>,
   img: ({ src }) =>
     src ? (
       <Image
