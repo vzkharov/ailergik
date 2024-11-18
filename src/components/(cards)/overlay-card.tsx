@@ -25,7 +25,7 @@ const OverlayCard = ({
   >
     <h3 className="mb- line-clamp-2 text-2xl">{title}</h3>
     {description ? (
-      <p className="mb-3 max-w-lg text-lg">{description}</p>
+      <p className="mb-3 line-clamp-1 max-w-lg text-lg">{description}</p>
     ) : null}
     <div className="mt-auto">{children}</div>
   </article>

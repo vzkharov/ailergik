@@ -3,17 +3,20 @@ import type { Page } from '~/lib/types'
 import { Image } from '~/components/ui/image'
 
 import { Title } from '~/components/title'
-import { Header } from '~/components/header'
 
 import { SectionEmergency } from './_sections/section-emergency'
+import { NavigationBreadcrumbs } from '../[topic]/_components/navigation-breadcrumbs'
 
 const EmergencyPage: Page = () => (
-  <>
+  <div className="mt-[100px] flex flex-col gap-y-[50px]">
     <div className="absolute inset-x-0 top-0 -z-10 h-[292px] bg-destructive" />
 
-    <Header className="mt-5 bg-white" />
-
     <div className="relative">
+      <NavigationBreadcrumbs
+        items={[{ href: '/emergency', name: 'Экстренная помощь' }]}
+        className="py-md"
+      />
+
       <Image
         alt="easy"
         src="/emergency/welcome.png"
@@ -42,7 +45,7 @@ const EmergencyPage: Page = () => (
     </div>
 
     <SectionEmergency />
-  </>
+  </div>
 )
 
 export default EmergencyPage

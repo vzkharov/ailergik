@@ -1,4 +1,4 @@
-import { readItem, readItems } from '@directus/sdk'
+import { readItems } from '@directus/sdk'
 
 import { client } from '~/lib/directus/client'
 
@@ -15,7 +15,7 @@ const fetchPosts = ({ topic, section, count }: SearchParams = {}) =>
     readItems('post', {
       fields: fields.brief,
       page: 1,
-      limit: count,
+      limit: count ?? 999,
       sort: 'date_created',
       filter: {
         ...filters.published,
@@ -32,17 +32,22 @@ const fetchPostIds = () =>
     }),
   )
 
-const fetchPostById = (id: string) =>
-  client.request(
-    readItem('post', id, {
-      fields: fields.full,
-      filter: filters.published,
-    }),
-  )
+const fetchPostBySlug = (slug: string) =>
+  client
+    .request(
+      readItems('post', {
+        fields: fields.full,
+        filter: {
+          ...filters.published,
+          slug: { _eq: slug },
+        },
+      }),
+    )
+    .then(posts => posts[0])
 
-type Post = Awaited<ReturnType<typeof fetchPostById>>
+type Post = Awaited<ReturnType<typeof fetchPostBySlug>>
 type PostId = Awaited<ReturnType<typeof fetchPostIds>>
 type PostPreview = Awaited<ReturnType<typeof fetchPosts>>[number]
 
-export { fetchPosts, fetchPostIds, fetchPostById }
+export { fetchPosts, fetchPostIds, fetchPostBySlug }
 export type { SearchParams, Post, PostId, PostPreview }

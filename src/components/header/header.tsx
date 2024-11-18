@@ -16,33 +16,29 @@ import { LocationButton } from '~/components/(buttons)/location-button'
 import { NavigationButton } from '~/components/(buttons)/navigatin-button'
 
 const Header = ({ style, className }: StyleProps) => (
-  <header
-    style={style}
-    className={cn(
-      'w-full rounded-full bg-popover/80 bg-white px-6 py-[18px] backdrop-blur-md',
-      className,
-    )}
-  >
-    <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
-      <div className="flex items-center gap-6">
-        <Logo />
+  <header style={style} className={cn('fixed top-xl z-50 w-full', className)}>
+    <div className="container mx-auto w-full">
+      <div className="flex items-center justify-between gap-4 rounded-full bg-white px-6 py-[18px] backdrop-blur-md">
+        <div className="flex items-center gap-6">
+          <Logo />
 
-        <LocationButton />
-      </div>
+          <LocationButton />
+        </div>
 
-      <NavigationButton className="hidden rounded-full md:inline-flex" />
+        <NavigationButton className="hidden rounded-full md:inline-flex" />
 
-      <SearchButton className="mx-4 max-w-xl flex-1" />
+        <SearchButton className="mx-4 max-w-xl flex-1" />
 
-      <div className="flex items-center gap-x-sm">
-        <Link href="/emergency">
-          <Button size="icon" variant="destructive" title="Экстренная помощь">
-            <EmergencyIcon className="h-6 w-6 -translate-y-px" />
-          </Button>
-        </Link>
-        <BookmarkIcon className="h-7 w-7" />
-        <HeartIcon className="h-7 w-7" />
-        <AuthButton className="hidden md:inline-flex" />
+        <div className="flex items-center gap-x-sm">
+          <Link href="/emergency">
+            <Button size="icon" variant="destructive" title="Экстренная помощь">
+              <EmergencyIcon className="h-6 w-6 -translate-y-px" />
+            </Button>
+          </Link>
+          <BookmarkIcon className="h-7 w-7" />
+          <HeartIcon className="h-7 w-7" />
+          <AuthButton className="hidden md:inline-flex" />
+        </div>
       </div>
     </div>
   </header>

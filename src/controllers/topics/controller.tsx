@@ -18,7 +18,7 @@ const fetchTopicBySlug = (slug: string) =>
     .request(
       readItems('topic', {
         filter: { slug: { _eq: slug } },
-        fields: ['id', 'name', 'color', 'slug'],
+        fields: ['id', 'name', 'color', 'slug', { cover: ['*'] }],
       }),
     )
     .then(items => items.at(0))

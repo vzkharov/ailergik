@@ -74,7 +74,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {startContent}
-        <span className="translate-y-px">{children}</span>
+        <span className="translate-y-[1.5px]">{children}</span>
         {icon}
       </Comp>
     )

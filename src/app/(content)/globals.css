@@ -126,7 +126,7 @@ h6 {
   }
 
   html {
-    @apply scroll-pt-10 scroll-smooth;
+    @apply scroll-pt-20 scroll-smooth;
   }
 
   body {

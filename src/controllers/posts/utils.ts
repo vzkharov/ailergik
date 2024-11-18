@@ -19,14 +19,16 @@ const fields = {
     },
   ],
   full: [
+    'id',
     'slug',
     'name',
     'content',
+    'description',
     'date_created',
     {
       cover: ['*'],
-      topic: ['name', 'color', 'slug'],
-      section: ['name', 'slug'],
+      topic: ['id', 'name', 'color', 'slug'],
+      section: ['id', 'name', 'slug'],
     },
   ],
   ids: ['slug'],

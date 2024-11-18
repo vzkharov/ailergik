@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Slot } from '@radix-ui/react-slot'
-import { ChevronRight, MoreHorizontal } from 'lucide-react'
+import { MoreHorizontal } from 'lucide-react'
 
 import { cn } from '~/lib/utils'
 
@@ -21,7 +21,7 @@ const BreadcrumbList = React.forwardRef<
     itemScope
     itemType="https://schema.org/BreadcrumbList"
     className={cn(
-      'flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5',
+      'flex flex-wrap items-center gap-1.5 break-words text-sm text-foreground',
       className,
     )}
     {...props}
@@ -56,7 +56,10 @@ const BreadcrumbLink = React.forwardRef<
     <Comp
       ref={ref}
       itemProp="item"
-      className={cn('transition-colors hover:text-foreground', className)}
+      className={cn(
+        'line-clamp-1 max-w-32 font-normal transition-colors hover:underline',
+        className,
+      )}
       {...props}
     >
       <span itemProp="name">{children}</span>
@@ -75,7 +78,7 @@ const BreadcrumbPage = React.forwardRef<
     itemProp="name"
     aria-disabled="true"
     aria-current="page"
-    className={cn('font-normal text-foreground', className)}
+    className={cn('line-clamp-1 max-w-xl font-normal italic', className)}
     {...props}
   />
 ))
@@ -89,10 +92,10 @@ const BreadcrumbSeparator = ({
   <li
     role="presentation"
     aria-hidden="true"
-    className={cn('[&>svg]:size-3.5', className)}
+    className={cn('', className)}
     {...props}
   >
-    {children ?? <ChevronRight />}
+    {children ?? '/'}
   </li>
 )
 BreadcrumbSeparator.displayName = 'BreadcrumbSeparator'

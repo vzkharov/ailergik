@@ -20,7 +20,7 @@ const DirectusImage = ({
     height={image.height ?? 1000}
     className={cn(
       'object-cover',
-      fill ? 'pointer-events-none absolute inset-0' : '',
+      fill ? 'pointer-events-none absolute inset-0 h-full w-full' : '',
       className,
     )}
   />

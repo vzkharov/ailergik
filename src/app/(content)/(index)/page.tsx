@@ -18,7 +18,7 @@ const Home: Page = async () => {
       <BentoTopics />
       <SocialBanner />
 
-      {topics.slice(0, 2).map(topic => (
+      {topics.map(topic => (
         <TopicTape key={topic.slug} topic={topic} />
       ))}
 

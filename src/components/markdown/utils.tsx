@@ -1,8 +1,10 @@
+import Image from 'next/image'
 import rehypeSlug from 'rehype-slug'
 import remarkFlexibleToc, { type TocItem } from 'remark-flexible-toc'
 import type { EvaluateOptions, MDXComponents } from 'next-mdx-remote-client/rsc'
 
 import { Title } from '~/components/title'
+import { Separator } from '~/components/ui/separator'
 
 const createHeading =
   (
@@ -10,31 +12,49 @@ const createHeading =
   ): Exclude<MDXComponents['h1'], undefined> =>
   // eslint-disable-next-line react/display-name
   ({ children, ...props }) => (
-    <Title as={as} highlight {...props}>
+    <Title as={as} {...props}>
       {children}
     </Title>
   )
 
 const components: MDXComponents = {
   ul: ({ children }) => (
-    <ul className="gap-y-sm flex list-inside list-disc flex-col">{children}</ul>
+    <ul className="my-md flex list-inside list-disc flex-col gap-y-sm text-md leading-normal">
+      {children}
+    </ul>
   ),
   ol: ({ children }) => (
-    <ol className="gap-y-sm flex list-inside list-decimal flex-col">
+    <ol className="my-md flex list-inside list-decimal flex-col gap-y-sm text-md leading-normal">
       {children}
     </ol>
   ),
   blockquote: ({ children }) => (
-    <blockquote className="rounded-xl bg-_accent px-6 py-4">
+    <blockquote className="my-md rounded-xs bg-topic px-6 py-4">
       {children}
     </blockquote>
   ),
   p: ({ children }) => (
-    <p className="text-md inline leading-normal">{children}</p>
+    <p className="inline text-md leading-normal">{children}</p>
   ),
+  img: ({ src }) =>
+    src ? (
+      <Image
+        alt=""
+        src={src}
+        width={552}
+        height={320}
+        className="my-md h-auto w-full rounded-md"
+      />
+    ) : null,
+
+  hr: () => <Separator className="my-[40px]" />,
   h1: createHeading('h1'),
   h2: createHeading('h2'),
-  h3: createHeading('h3'),
+  h3: ({ id, title, children }) => (
+    <Title as="h3" id={id} title={title} className="text-xl">
+      {children}
+    </Title>
+  ),
   h4: createHeading('h4'),
   h5: createHeading('h5'),
   h6: createHeading('h6'),

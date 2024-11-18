@@ -7,6 +7,7 @@ import { rootMetadata } from '~/lib/metadata'
 import { fontsClassName } from '~/lib/fonts'
 
 import { Footer } from '~/components/footer'
+import { Header } from '~/components/header'
 
 import { Providers } from './providers'
 
@@ -18,8 +19,9 @@ const Root: Layout = ({ children }) => (
     suppressContentEditableWarning
   >
     <body className={fontsClassName}>
+      <Header />
       <Providers>
-        <main className="gap-y-2xl pt-md container flex flex-col">
+        <main className="container flex flex-col gap-y-2xl pt-xs">
           {children}
         </main>
       </Providers>

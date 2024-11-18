@@ -1,21 +1,16 @@
 import Image from 'next/image'
 
-import { Header } from '~/components/header'
 import { DetailButton } from '~/components/(buttons)/detail-button'
 
 const WelcomeSection = () => {
   return (
     <div className="relative">
-      <div className="top-md absolute w-full">
-        <Header />
-      </div>
-
       <Image
         alt="easy"
         src="/welcome.png"
         width={1128}
         height={572}
-        className="max-md:h-[450px] max-md:rounded-3xl"
+        className="max-md:rounded-3xl max-md:h-[450px]"
       />
 
       <div className="absolute bottom-0 left-0">

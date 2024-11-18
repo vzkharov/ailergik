@@ -64,7 +64,7 @@ const TopicTape = async ({
 
       <Link href={'/' + topic.slug} className="mb-xl mt-2xl w-full">
         <Button variant="outline" className="h-24 w-full">
-          Перейти в раздел &quot;Медицина&quot;
+          Перейти в раздел &quot;{topic.name}&quot;
         </Button>
       </Link>
     </section>

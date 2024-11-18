@@ -12,7 +12,7 @@ import { OverlayCard } from './overlay-card'
 type CoverCardProps = StyleProps & {
   image: DirectusFile
   title: string
-  href: string
+  href?: string
   description?: string | null | undefined
 
   detailLabel?: string
@@ -31,16 +31,18 @@ const CoverCard = (props: CoverCardProps) => {
 
   return (
     <article style={style} className={cn(styles.root, className)}>
-      <DirectusImage fill image={image} />
+      <DirectusImage fill image={image} className="!object-cover" />
 
       <OverlayCard
         title={title}
         description={description ?? undefined}
         className={cn('absolute bottom-sm left-sm w-2/3')}
       >
-        <Link href={href}>
-          <DetailButton>{detailLabel}</DetailButton>
-        </Link>
+        {href ? (
+          <Link href={href}>
+            <DetailButton>{detailLabel}</DetailButton>
+          </Link>
+        ) : null}
       </OverlayCard>
     </article>
   )
