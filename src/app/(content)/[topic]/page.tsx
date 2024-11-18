@@ -74,7 +74,9 @@ export const revalidate = false
 export const generateStaticParams = async (): Promise<Params[]> => {
   const topics = await fetchTopics()
 
-  return topics.map(topic => ({ topic: topic.slug }))
+  const params = topics.map(topic => ({ topic: topic.slug }))
+
+  return params
 }
 
 export default TopicPage

@@ -76,7 +76,12 @@ export const revalidate = false
 export const generateStaticParams = async (): Promise<Params[]> => {
   const posts = await fetchPosts()
 
-  return posts.map(post => ({ post: post.slug }))
+  const params = posts.map(post => ({
+    post: post.slug,
+    topic: post.topic.slug,
+  }))
+
+  return params
 }
 
 export default PostPage
