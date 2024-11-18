@@ -4,16 +4,22 @@ import { cn } from '~/lib/utils'
 import type { StyleProps } from '~/lib/types'
 import type { DirectusFile } from '~/lib/directus/_generated'
 
-type DirectusImageProps = StyleProps & { image: DirectusFile; fill?: boolean }
+type DirectusImageProps = StyleProps & {
+  fill?: boolean
+  image: DirectusFile
+  loading?: 'lazy' | 'eager' | undefined
+}
 
 const DirectusImage = ({
   style,
   image,
   className,
   fill = false,
+  loading = 'lazy',
 }: DirectusImageProps) => (
   <Image
     style={style}
+    loading={loading}
     alt={image.title || ''}
     src={['https://cms.allergik.by/assets', image.id].join('/')}
     width={image.width ?? 1000}

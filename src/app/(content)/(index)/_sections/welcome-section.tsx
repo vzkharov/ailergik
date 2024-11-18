@@ -6,7 +6,8 @@ const WelcomeSection = () => {
   return (
     <div className="relative">
       <Image
-        alt="easy"
+        alt=""
+        loading="eager"
         src="/welcome.png"
         width={1128}
         height={572}
