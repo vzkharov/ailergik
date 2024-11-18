@@ -32,7 +32,7 @@ const TopicPosts = async ({ topic, section }: TopicPostsProps) => {
       id={section.slug}
       className="border-b border-b-popover py-[60px] first:pt-0 last:border-b-0"
     >
-      <Title highlight as="h4" className="mb-lg text-md font-bold after:h-2/3">
+      <Title highlight as="h4" className="mb-lg text-md font-bold after:!h-2/3">
         {section.name}
       </Title>
 
