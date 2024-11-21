@@ -134,3 +134,24 @@ h6 {
     @apply bg-background font-helvetica text-lg text-foreground;
   }
 }
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background-color: #1a1a1a;
+    border-radius: 8px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-button {
+    display: none;
+  }
+}
