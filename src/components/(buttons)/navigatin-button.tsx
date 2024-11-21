@@ -1,16 +1,21 @@
-import { cn } from '~/lib/utils'
-import type { StyleProps } from '~/lib/types'
+import { fetchTopics, fetchTopicSections } from '~/controllers/topics'
+import { MenuPopover } from '~/app/(content)/[topic]/_components/menu-popover'
 
-import { Button } from '~/components/ui/button'
+const NavigationButton = async () => {
+  const topics = await fetchTopics()
+  const sections = await fetchTopicSections().then(items => items.slice(0, 4))
+  const topicsSlug = topics.map(item => ({
+    href: '/' + item.slug,
+    name: item.name,
+    sections: sections,
+  }))
 
-const NavigationButton = ({ style, className }: StyleProps) => (
-  <Button
-    style={style}
-    variant="outline"
-    className={cn('flex items-center gap-2', className)}
-  >
-    МЕНЮ
-  </Button>
-)
+  return (
+    <MenuPopover
+      items={topicsSlug}
+      className="hidden rounded-full md:inline-flex"
+    />
+  )
+}
 
 export { NavigationButton }
