@@ -3,14 +3,18 @@
 import { cn } from '~/lib/utils'
 import type { StyleProps } from '~/lib/types'
 
-import { Button } from '~/components/ui/button'
-import { LocationIcon } from '~/components/ui/icons/location'
-import { Dialog } from '@radix-ui/react-dialog'
-import { DialogContent, DialogHeader, DialogTrigger } from '../ui/dialog'
 import { InfoIcon } from 'lucide-react'
+import { SearchIcon } from '../ui/icons/search-icon'
+import { LocationIcon } from '~/components/ui/icons/location'
 
 import { Input } from '~/components/ui/input'
-import { SearchIcon } from '../ui/icons/search-icon'
+import { Button } from '~/components/ui/button'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTrigger,
+} from '../ui/dialog'
 
 const cities = [
   'Минск',
@@ -58,7 +62,7 @@ const LocationButton = ({ style, className }: StyleProps) => {
           Новополоцк
         </Button>
       </DialogTrigger>
-      <DialogContent className="w-[382px] gap-y-5 bg-white/80 p-6 backdrop-blur-sm">
+      <DialogContent className="w-[382px] gap-y-5 bg-white/80 p-6 backdrop-blur-md">
         <DialogHeader className="mt-10 text-center font-helvetica text-xl uppercase">
           Населенный пункт
         </DialogHeader>

@@ -18,7 +18,7 @@ const Markdown = async ({ source, style, className }: MarkdownProps) => {
 
   return (
     <section style={style} className={cn('flex gap-x-10', className)}>
-      <div className="flex flex-col gap-y-xs">{content}</div>
+      <div className="flex flex-col gap-y-5">{content}</div>
     </section>
   )
 }

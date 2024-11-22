@@ -39,7 +39,7 @@ const PartnersAccordionItem = ({
     value={id}
     style={{ color: color }}
     className={cn(
-      'rounded-3xl border border-black hover:border-transparent hover:bg-current data-[state=open]:border-none data-[state=open]:bg-current',
+      'rounded-xl border border-black hover:border-transparent hover:bg-current data-[state=open]:border-none data-[state=open]:bg-current',
       className,
     )}
   >

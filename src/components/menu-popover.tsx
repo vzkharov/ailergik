@@ -3,9 +3,8 @@
 import { cn } from '~/lib/utils'
 import type { StyleProps } from '~/lib/types'
 
-import { Button } from '~/components/ui/button'
-
 import { useState } from 'react'
+
 import {
   Popover,
   PopoverContent,
@@ -17,7 +16,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '~/components/ui/accordion'
-
+import { Button } from '~/components/ui/button'
 import { ArrowListIcon } from '~/components/ui/icons/arrow-list'
 
 type SectionItem = {

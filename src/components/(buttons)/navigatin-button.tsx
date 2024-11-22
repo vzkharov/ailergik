@@ -1,5 +1,5 @@
+import { MenuPopover } from '../menu-popover'
 import { fetchTopics, fetchTopicSections } from '~/controllers/topics'
-import { MenuPopover } from '~/app/(content)/[topic]/_components/menu-popover'
 
 const NavigationButton = async () => {
   const topics = await fetchTopics()
