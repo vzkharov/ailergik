@@ -4,6 +4,10 @@ const getItemsCountByViewType = (view: string): number => {
       return 4
     }
 
+    case 'medium': {
+      return 4
+    }
+
     case 'big': {
       return 1
     }
