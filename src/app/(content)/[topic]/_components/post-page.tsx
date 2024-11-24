@@ -6,7 +6,7 @@ import { Separator } from '~/components/ui/separator'
 import { Accordion } from '~/components/ui/accordion'
 import { ListBlock } from '~/components/(blocks)/list-block'
 import { CheckBlock } from '~/components/(blocks)/check-block'
-import { PostActions } from '../[post]/_components/post-action'
+import { PostActions } from '../[section]/[post]/_components/post-action'
 import { DoctorCard } from '../../partners/components/doctor-card'
 import { DetailButton } from '~/components/(buttons)/detail-button'
 

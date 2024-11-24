@@ -16,6 +16,7 @@ const fields = {
       cover: ['*'],
       topic: ['name', 'color', 'slug'],
       section: ['name', 'slug'],
+      subsection: ['name', 'slug'],
     },
   ],
   full: [
@@ -29,6 +30,7 @@ const fields = {
       cover: ['*'],
       topic: ['id', 'name', 'color', 'slug'],
       section: ['id', 'name', 'slug'],
+      subsection: ['id', 'name', 'slug'],
     },
   ],
   ids: ['slug'],

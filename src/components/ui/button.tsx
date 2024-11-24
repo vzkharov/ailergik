@@ -27,7 +27,8 @@ const buttonVariants = cva(
         otp: 'cursor-pointer border-0 !px-0 font-helvetica text-xs font-bold underline',
         secondary:
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        ghost: '',
+
+        ghost: '!px-0 font-medium',
         link: 'text-primary underline-offset-4 hover:underline',
       },
       size: {

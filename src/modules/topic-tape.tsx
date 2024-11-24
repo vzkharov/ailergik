@@ -1,70 +1,63 @@
-import { Fragment } from 'react'
+import { tv } from 'tailwind-variants'
 import Link from 'next/link'
 
-import type { Topic, TopicSection } from '~/lib/directus/_generated'
-
-import { fetchPosts } from '~/controllers/posts'
-import { fetchTopicSections } from '~/controllers/topics'
+import { fetchTopicSections, Topic } from '~/controllers/topics'
 
 import { Title } from '~/components/title'
 import { Button } from '~/components/ui/button'
 import { Tabs, TabsList, TabsTrigger } from '~/components/ui/tabs'
 
-import { BigCard } from '~/components/(cards)/big-card'
-import { BentoCard } from '~/components/(cards)/bento-card'
-import { CoverCard } from '~/components/(cards)/cover-card'
-import { SmallCard } from '~/components/(cards)/small-card'
+import { SectionTape } from './section-tape'
 
-const TopicTape = async ({
-  topic,
-}: {
-  topic: Pick<Topic, 'id' | 'slug' | 'name' | 'color'>
-}) => {
-  const topicSections = await fetchTopicSections().then(sections =>
-    sections.slice(0, 4),
-  )
+const TopicTape = async ({ topic }: { topic: Topic }) => {
+  const sections = await fetchTopicSections()
+
+  if (sections.length === 0) {
+    return null
+  }
 
   return (
-    <section id={topic.slug} className="flex flex-col gap-y-xl">
-      <Title as="h3" className="relative mb-xl w-fit !text-3xl">
+    <section id={topic.slug} className={styles.root()}>
+      <Title as="h3" className={styles.title()}>
         [ {topic.name} ]
         <span
           style={{ backgroundColor: topic.color }}
-          className="absolute bottom-0 left-6 -z-10 h-1/2 w-[95%] rounded-[8px]"
+          className={styles.titleBar()}
         />
       </Title>
 
-      <Tabs defaultValue="" className="mb-lg">
+      <Tabs defaultValue={ALL_VALUE} className="mb-lg">
         <TabsList>
           <Link href={'#' + topic.slug}>
-            <TabsTrigger value="" className="uppercase">
+            <TabsTrigger value={ALL_VALUE} className={styles.tab()}>
               Все
             </TabsTrigger>
           </Link>
-          {topicSections.map(_section => (
+
+          {sections.map(section => (
             <Link
-              href={'#' + topic.slug + '-' + _section.slug}
-              key={_section.slug}
+              key={section.slug}
+              href={'#' + topic.slug + '-' + section.slug}
             >
-              <TabsTrigger value={_section.slug} className="uppercase">
-                {_section.name}
+              <TabsTrigger value={section.slug} className={styles.tab()}>
+                {section.name}
               </TabsTrigger>
             </Link>
           ))}
         </TabsList>
       </Tabs>
 
-      {topicSections.map(_section => (
-        <Fragment key={_section.slug}>
-          <SectionTape
-            section={{ ..._section, view: _section.view.value }}
-            topic={topic}
-          />
-        </Fragment>
+      {sections.map(section => (
+        <SectionTape
+          id={topic.slug + '-' + section.slug}
+          key={section.slug}
+          topic={topic}
+          section={section}
+        />
       ))}
 
-      <Link href={'/' + topic.slug} className="mb-xl mt-2xl w-full">
-        <Button variant="outline" className="h-24 w-full">
+      <Link href={'/' + topic.slug} className={styles.link()}>
+        <Button variant="outline" className={styles.linkButton()}>
           Перейти в раздел &quot;{topic.name}&quot;
         </Button>
       </Link>
@@ -72,129 +65,17 @@ const TopicTape = async ({
   )
 }
 
-const SectionTape = async ({
-  topic,
-  section,
-}: {
-  topic: Pick<Topic, 'id' | 'slug' | 'name' | 'color'>
-  section: Pick<TopicSection, 'id' | 'name' | 'slug'> & { view: string }
-}) => {
-  const posts = await fetchPosts({
-    topic: String(topic.id),
-    section: String(section.id),
-    count: 4,
-  })
+const ALL_VALUE = 'all'
 
-  if (posts.length === 0) {
-    return null
-  }
-
-  const itemsCount: number = (() => {
-    switch (section.view) {
-      case 'small': {
-        return 4
-      }
-
-      case 'big': {
-        return 1
-      }
-
-      case 'bento': {
-        return 3
-      }
-
-      case 'cover': {
-        return 1
-      }
-
-      default: {
-        return 1
-      }
-    }
-  })()
-
-  return (
-    <div id={topic.slug + '-' + section.slug} className={styles.section.root}>
-      <h5 className={styles.section.title}>{section.name}</h5>
-      <div className={styles.section.layout[section.view]}>
-        {posts.slice(0, itemsCount).map((post, idx) => {
-          const href = ['', post.topic.slug, post.slug].join('/')
-
-          if (section.view === 'cover') {
-            return (
-              <CoverCard
-                key={post.slug}
-                title={post.name}
-                image={post.cover}
-                description={post.description}
-                detailLabel="Подробнее"
-                href={href}
-                className="h-[550px]"
-              />
-            )
-          }
-
-          if (section.view === 'big') {
-            return (
-              <BigCard
-                key={post.slug}
-                title={post.name}
-                image={post.cover}
-                description={post.description}
-                detailLabel="Читать статью"
-                href={href}
-              />
-            )
-          }
-
-          if (section.view === 'small') {
-            return (
-              <SmallCard
-                key={post.slug}
-                href={href}
-                image={post.cover}
-                title={post.name}
-              />
-            )
-          }
-
-          if (section.view === 'bento') {
-            return (
-              <BentoCard
-                key={post.slug}
-                href={href}
-                image={post.cover}
-                title={post.name}
-                className={styles.section.bento[idx as 0 | 1 | 2]}
-              />
-            )
-          }
-
-          return null
-        })}
-      </div>
-    </div>
-  )
-}
-
-const styles = {
-  section: {
-    root: 'flex flex-col gap-y-md border-t py-[40px]',
-    title: 'text-md font-medium uppercase text-muted-foreground',
-    layout: {
-      small: 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg',
-      bento:
-        'h-fit flex flex-col gap-y-12 md:grid md:grid-cols-2 md:grid-rows-[1fr_1fr_auto] md:gap-x-20 md:gap-y-20',
-      big: 'w-full',
-      cover: 'w-full',
-    } as Record<string, string>,
-    item: '',
-    bento: {
-      0: 'row-span-1',
-      1: 'col-start-2 row-span-2 row-start-1 place-self-center',
-      2: 'col-span-1 row-span-2 row-start-2 place-content-center',
-    },
+const styles = tv({
+  slots: {
+    root: 'flex flex-col gap-y-xl',
+    title: 'relative mb-xl w-fit !text-3xl',
+    titleBar: 'absolute bottom-0 left-6 -z-10 h-1/2 w-[95%] rounded-[8px]',
+    link: 'mb-xl mt-2xl w-full',
+    linkButton: 'h-24 w-full',
+    tab: 'uppercase',
   },
-}
+})()
 
 export { TopicTape }

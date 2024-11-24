@@ -13,33 +13,28 @@ type SmallCardProps = {
 }
 
 const SmallCard = ({ href, image, title }: SmallCardProps) => (
-  <article className="w-full">
-    <div className="relative">
-      <DirectusImage
-        image={image}
-        className="h-96 rounded-md object-cover"
-        style={{
-          clipPath: clipBottomTriangle(80),
-        }}
-      />
-      <div className="absolute bottom-0 right-0 z-0 flex -rotate-45 items-center justify-center">
-        <Link href={href}>
-          <Button
-            icon
-            size="icon"
-            variant="outline"
-            className="!h-10 !w-10 !p-0"
-          >
-            <ArrowRight strokeWidth={1} />
-          </Button>
-        </Link>
-      </div>
+  <article className="group relative flex w-full cursor-pointer flex-col">
+    <DirectusImage
+      image={image}
+      className="aspect-[4/3] w-full max-w-72 rounded-sm object-cover"
+    />
+    <h5 className="mt-md line-clamp-2 text-sm">{title}</h5>
+
+    <div className="mt-auto">
+      <Button
+        variant="ghost"
+        icon={<ArrowRight className="h-4 w-4 transition-all" />}
+        className="gap-x-1"
+      >
+        Читать
+      </Button>
     </div>
-    <h5 className="mt-md line-clamp-3 text-lg">{title}</h5>
+
+    <Link
+      href={href}
+      className="absolute inset-0 bg-background opacity-0 transition-all group-hover:opacity-30"
+    />
   </article>
 )
-
-const clipBottomTriangle = (offset: number) =>
-  `polygon(0 0, 100% 0, 100% calc(100% - ${offset}px), calc(100% - ${offset}px) 100%, 0 100%)`
 
 export { SmallCard }

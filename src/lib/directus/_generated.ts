@@ -38,6 +38,8 @@ export interface Post {
 	slug: string;
 	/** @required */
 	cover: DirectusFile | string;
+	/** @required */
+	subsection: TopicSubsection | string;
 }
 
 export interface PostView {
@@ -114,7 +116,24 @@ export interface TopicSection {
 	/** @required */
 	order: number;
 	/** @required */
-	view: PostView | string;
+	view: 'big' | 'medium' | 'small' | 'cover' | 'bento';
+	subsections?: TopicSectionTopicSubsection1[] | string[];
+}
+
+export interface TopicSectionTopicSubsection1 {
+	/** @required */
+	id: number;
+	topic_section_id?: TopicSection | string | null;
+	topic_subsection_id?: TopicSubsection | string | null;
+}
+
+export interface TopicSubsection {
+	/** @required */
+	id: number;
+	/** @required */
+	name: string;
+	/** @required */
+	slug: string;
 }
 
 export interface DirectusActivity {
@@ -520,6 +539,8 @@ export interface Schema {
 	social: Social[];
 	topic: Topic[];
 	topic_section: TopicSection[];
+	topic_section_topic_subsection_1: TopicSectionTopicSubsection1[];
+	topic_subsection: TopicSubsection[];
 	directus_activity: DirectusActivity[];
 	directus_collections: DirectusCollection[];
 	directus_fields: DirectusField[];

@@ -47,6 +47,7 @@ const config = {
         lg: 'var(--indent-lg)',
         xl: 'var(--indent-xl)',
         '2xl': 'var(--indent-2xl)',
+        '3xl': 'var(--indent-3xl)',
       },
 
       colors: {

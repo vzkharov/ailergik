@@ -13,6 +13,7 @@ import {
   Dialog,
   DialogContent,
   DialogHeader,
+  DialogTitle,
   DialogTrigger,
 } from '../ui/dialog'
 
@@ -52,7 +53,7 @@ const cities = [
 const LocationButton = ({ style, className }: StyleProps) => {
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <Button
           style={style}
           variant="ghost"
@@ -63,8 +64,10 @@ const LocationButton = ({ style, className }: StyleProps) => {
         </Button>
       </DialogTrigger>
       <DialogContent className="w-[382px] gap-y-5 bg-white/80 p-6 backdrop-blur-md">
-        <DialogHeader className="mt-10 text-center font-helvetica text-xl uppercase">
-          Населенный пункт
+        <DialogHeader className="mt-10">
+          <DialogTitle className="text-center font-helvetica text-xl uppercase">
+            Населенный пункт
+          </DialogTitle>
         </DialogHeader>
 
         <div className="flex flex-col gap-y-3">

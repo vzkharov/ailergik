@@ -5,7 +5,7 @@ import { Image } from '~/components/ui/image'
 import { Title } from '~/components/title'
 
 import { SectionEmergency } from './_sections/section-emergency'
-import { NavigationBreadcrumbs } from '../[topic]/_components/navigation-breadcrumbs'
+import { NavigationBreadcrumbs } from '../../../components/navigation-breadcrumbs'
 
 const EmergencyPage: Page = () => (
   <div className="mt-[100px] flex flex-col gap-y-[50px]">

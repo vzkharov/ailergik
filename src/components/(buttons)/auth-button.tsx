@@ -12,7 +12,7 @@ const AuthButton = ({
   ...props
 }: ButtonProps) => (
   <Dialog>
-    <DialogTrigger>
+    <DialogTrigger asChild>
       <Button
         variant={variant}
         {...props}

@@ -28,7 +28,7 @@ const BigCard = ({
   <article
     style={style}
     className={cn(
-      'rounded-2xl relative flex gap-4 max-md:flex-col-reverse md:items-stretch md:gap-24',
+      'rounded-2xl relative flex justify-between gap-4 max-md:flex-col-reverse md:items-stretch md:gap-24',
       className,
     )}
   >

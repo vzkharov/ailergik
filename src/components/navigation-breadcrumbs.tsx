@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 
+import { cn } from '~/lib/utils'
 import type { StyleProps } from '~/lib/types'
 
 import {
@@ -34,7 +35,7 @@ const NavigationBreadcrumbs = ({
   ]
 
   return (
-    <Breadcrumb style={style} className={className}>
+    <Breadcrumb style={style} className={cn('', className)}>
       <BreadcrumbList>
         {links.map((link, idx) => {
           if (!link.href || idx === links.length - 1) {
@@ -60,3 +61,4 @@ const NavigationBreadcrumbs = ({
 }
 
 export { NavigationBreadcrumbs }
+export type { NavigationItem }

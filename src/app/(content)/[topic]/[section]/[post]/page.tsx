@@ -4,20 +4,27 @@ import { notFound } from 'next/navigation'
 import { DOMAIN_URL } from '~/env'
 import type { Page } from '~/lib/types'
 
-import { fetchPostBySlug, fetchPosts } from '~/controllers/posts'
-import { fetchTopicSections } from '~/controllers/topics'
+import { fetchTopics } from '~/controllers/topics'
+import { fetchPosts, fetchPostBySlug } from '~/controllers/posts'
 
+import { Spacer } from '~/components/ui/spacer'
 import { Markdown } from '~/components/markdown'
-import { StyleAccent } from '~/modules/style-accent'
+import { NavigationBreadcrumbs } from '~/components/navigation-breadcrumbs'
 
-import { TopicToC } from '../_components/topic-toc'
-import { NavigationBreadcrumbs } from '../_components/navigation-breadcrumbs'
+import { TopicToC } from '~/modules/topic-toc'
+import { StyleAccent } from '~/modules/style-accent'
+import { SuggestPosts } from '~/modules/suggest-posts'
 
 import { PostCover } from './_components/post-cover'
 import { PostActions } from './_components/post-action'
+import { SimilarPosts } from './_components/similar-posts'
+
+import { styles } from './styles'
 
 type Params = {
   post: string
+  topic: string
+  section: string
 }
 
 const PostPage: Page<Params> = async props => {
@@ -31,49 +38,56 @@ const PostPage: Page<Params> = async props => {
     notFound()
   }
 
-  const sections = await fetchTopicSections().then(items =>
-    items.map(item => ({
-      ...item,
-      active: item.slug === post.section.slug,
-    })),
+  const topics = await fetchTopics().then(topics =>
+    topics.filter(topic => topic.slug !== post.topic.slug),
   )
 
   return (
-    <div className="mt-[100px] flex flex-col">
+    <>
       <StyleAccent color={post.topic.color} />
-
-      <div className="fixed inset-0 -z-20 bg-[#F7F7F9]" />
 
       <NavigationBreadcrumbs
         items={[
-          { href: '/' + post.topic.slug, name: post.topic.name },
+          { name: post.topic.name, href: '/' + post.topic.slug },
           {
-            href: '/' + post.topic.slug + '#' + post.section.slug,
             name: post.section.name,
+            href: '/' + post.topic.slug + '/' + post.section.slug,
           },
           { name: post.name },
         ]}
-        className="py-md"
       />
 
-      <div className="flex gap-md">
+      <Spacer y="md" />
+
+      <div className={styles.main()}>
         <TopicToC
-          items={sections}
+          activeSlug={post.section.slug}
           baseUrl={'/' + post.topic.slug}
-          className="sticky top-32 h-fit w-[263px] min-w-[263px] max-w-[263px]"
+          className={styles.toc()}
         />
-        <div className="flex flex-1 flex-col gap-y-xl">
+        <div className={styles.content()}>
           <PostCover post={post} />
           <PostActions />
-          <Markdown source={post.content} className="max-w-2xl" />
+          <Markdown source={post.content} className={styles.markdown()} />
         </div>
       </div>
-    </div>
+
+      <Spacer y="2xl" />
+
+      <SimilarPosts topic={post.topic} section={post.section} />
+
+      <Spacer y="2xl" />
+
+      {topics.map(topic => (
+        <SuggestPosts
+          key={topic.slug}
+          topic={topic}
+          className="border-t py-2xl"
+        />
+      ))}
+    </>
   )
 }
-
-export const dynamic = 'force-static'
-export const revalidate = false
 
 export const generateStaticParams = async (): Promise<Params[]> => {
   const posts = await fetchPosts()
@@ -81,6 +95,7 @@ export const generateStaticParams = async (): Promise<Params[]> => {
   const params = posts.map(post => ({
     post: post.slug,
     topic: post.topic.slug,
+    section: post.section.slug,
   }))
 
   return params

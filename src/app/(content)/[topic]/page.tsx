@@ -5,17 +5,21 @@ import { DOMAIN_URL } from '~/env'
 import type { Page } from '~/lib/types'
 
 import {
-  fetchTopicBySlug,
   fetchTopics,
+  fetchTopicBySlug,
   fetchTopicSections,
 } from '~/controllers/topics'
 
-import { StyleAccent } from '~/modules/style-accent'
+import { Spacer } from '~/components/ui/spacer'
 import { DirectusImage } from '~/components/(images)/directus-image'
+import { NavigationBreadcrumbs } from '~/components/navigation-breadcrumbs'
 
-import { TopicToC } from './_components/topic-toc'
+import { TopicToC } from '~/modules/topic-toc'
+import { StyleAccent } from '~/modules/style-accent'
+
 import { TopicPosts } from './_components/topic-posts'
-import { NavigationBreadcrumbs } from './_components/navigation-breadcrumbs'
+
+import { styles } from './styles'
 
 type Params = {
   topic: string
@@ -34,47 +38,41 @@ const TopicPage: Page<Params> = async props => {
   const sections = await fetchTopicSections().then(items => items.slice(0, 4))
 
   return (
-    <div className="mt-[100px] flex flex-col gap-y-[50px]">
+    <>
       <StyleAccent color={topic.color} />
+      <div className={styles.overlay()} />
 
-      <div className="absolute inset-x-0 top-0 -z-10 h-[292px] bg-topic" />
-      <div className="fixed inset-0 -z-20 bg-[#F7F7F9]" />
+      <NavigationBreadcrumbs
+        items={[{ href: '/' + topic.slug, name: topic.name }]}
+      />
+
+      <Spacer y="md" />
 
       <div className="relative">
-        <NavigationBreadcrumbs
-          items={[{ href: '/' + topic.slug, name: topic.name }]}
-          className="py-md"
-        />
-
         <DirectusImage
           loading="eager"
           image={topic.cover}
-          className="h-[385px] rounded-md"
+          className={styles.cover()}
         />
 
-        <h1 className="absolute bottom-0 left-0 rounded-tr-md bg-[#F7F7F9] pl-2 pr-8 pt-8 text-4xl font-normal uppercase max-md:-bottom-2 max-md:left-0 max-md:text-[19px]">
-          [ {topic.name} ]
-        </h1>
+        <div className={styles.titleWrapper()}>
+          <h1 className={styles.title()}>[ {topic.name} ]</h1>
+        </div>
       </div>
 
-      <div className="flex gap-md">
-        <TopicToC
-          items={sections}
-          baseUrl={'/' + topic.slug}
-          className="sticky top-32 h-fit w-[263px]"
-        />
-        <div className="flex-1">
+      <Spacer y="3xl" />
+
+      <div className={styles.main()}>
+        <TopicToC baseUrl={'/' + topic.slug} className={styles.toc()} />
+        <div className={styles.content()}>
           {sections.map(_section => (
             <TopicPosts key={_section.slug} topic={topic} section={_section} />
           ))}
         </div>
       </div>
-    </div>
+    </>
   )
 }
-
-export const dynamic = 'force-static'
-export const revalidate = false
 
 export const generateStaticParams = async (): Promise<Params[]> => {
   const topics = await fetchTopics()

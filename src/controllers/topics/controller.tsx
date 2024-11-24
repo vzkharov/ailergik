@@ -33,10 +33,38 @@ const fetchTopicBySlug = (slug: string) =>
 const fetchTopicSections = () =>
   client.request(
     readItems('topic_section', {
-      fields: ['id', 'name', 'slug', { view: ['value'] }],
       sort: 'order',
+      fields: ['id', 'name', 'slug', 'view', { subsections: ['*'] }],
     }),
   )
 
-export { fetchTopics, fetchTopicBySlug, fetchTopicSections }
-export type { SearchParams }
+const fetchTopicSectionBySlug = (slug: string) =>
+  client
+    .request(
+      readItems('topic_section', {
+        filter: { slug: { _eq: slug } },
+        fields: ['id', 'name', 'slug', 'view', { subsections: ['*'] }],
+      }),
+    )
+    .then(items => items[0])
+
+const fetchTopicSubsections = () =>
+  client.request(
+    readItems('topic_subsection', {
+      sort: 'id',
+      fields: ['id', 'name', 'slug'],
+    }),
+  )
+
+type Topic = Awaited<ReturnType<typeof fetchTopics>>[number]
+type TopicSection = Awaited<ReturnType<typeof fetchTopicSections>>[number]
+type TopicSubsection = Awaited<ReturnType<typeof fetchTopicSubsections>>[number]
+
+export {
+  fetchTopics,
+  fetchTopicBySlug,
+  fetchTopicSections,
+  fetchTopicSubsections,
+  fetchTopicSectionBySlug,
+}
+export type { SearchParams, Topic, TopicSection, TopicSubsection }

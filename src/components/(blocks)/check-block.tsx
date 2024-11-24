@@ -1,6 +1,7 @@
-import { ReactChildren, StyleProps } from '~/lib/types'
 import { cn } from '~/lib/utils'
-import { CheckIcon } from '../ui/icons/check-icon'
+import type { StyleProps, ReactChildren } from '~/lib/types'
+
+import { CheckIcon } from '~/components/ui/icons/check-icon'
 
 type CheckBlockProps = StyleProps & {
   children: ReactChildren

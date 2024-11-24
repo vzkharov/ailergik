@@ -5,7 +5,7 @@
 @layer base {
   :root {
     /* Default background color of <body />...etc */
-    --background: 0 0% 100%; /** hsla(0, 0%, 100%, 1) */
+    --background: 240 14% 97%; /** hsla(240, 14%, 97%, 1); */
     --foreground: 220 60% 20%; /** hsla(220, 60%, 20%, 1) */
 
     /* Background color for popovers such as <DropdownMenu />, <HoverCard />, <Popover /> */
@@ -56,7 +56,8 @@
     --indent-md: 20px;
     --indent-lg: 25px;
     --indent-xl: 30px;
-    --indent-2xl: 75px;
+    --indent-2xl: 50px;
+    --indent-3xl: 75px;
 
     /* Font sizes */
     --font-xs: 12px;

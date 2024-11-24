@@ -58,7 +58,7 @@ const MenuPopover = ({ style, className, items }: MenuPopoverProps) => {
   const [open, setOpen] = useState<boolean>(false)
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger className="group h-10 bg-transparent">
+      <PopoverTrigger asChild className="group h-10 bg-transparent">
         <Button
           style={style}
           variant="outline"

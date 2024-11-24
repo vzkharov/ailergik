@@ -49,7 +49,7 @@ const components: MDXComponents = {
       />
     ) : null,
 
-  hr: () => <Separator className="my-[40px]" />,
+  hr: () => <Separator className="my-[40px] last:mb-0" />,
   h1: createHeading('h1'),
   h2: createHeading('h2'),
   h3: ({ id, title, children }) => (

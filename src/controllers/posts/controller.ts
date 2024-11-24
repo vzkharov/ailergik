@@ -8,12 +8,13 @@ type SearchParams = {
   count?: number
   topic?: string
   section?: string
+  subsection?: string
 }
 
-const fetchPosts = ({ topic, section, count }: SearchParams = {}) =>
+const fetchPosts = ({ topic, section, subsection, count }: SearchParams = {}) =>
   client.request(
     readItems('post', {
-      fields: fields.brief,
+      fields: fields.full,
       page: 1,
       limit: count ?? 999,
       sort: 'date_created',
@@ -21,6 +22,7 @@ const fetchPosts = ({ topic, section, count }: SearchParams = {}) =>
         ...filters.published,
         topic: { _eq: topic },
         section: { _eq: section },
+        subsection: { _eq: subsection },
       },
     }),
   )

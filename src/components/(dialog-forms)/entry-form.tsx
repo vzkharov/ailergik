@@ -6,14 +6,16 @@ import { Link } from '../ui/link'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 
-import { DialogContent, DialogHeader } from '../ui/dialog'
+import { DialogContent, DialogHeader, DialogTitle } from '../ui/dialog'
 import { Separator } from '~/components/ui/separator'
 import { AgreementCheckbox } from '../(buttons)/agreement-checkbox'
 
 const EntryForm = ({ className }: StyleProps) => (
   <DialogContent className="bg-white/80 p-6 backdrop-blur-md">
-    <DialogHeader className="mt-10 text-center font-helvetica text-xl font-medium uppercase">
-      вход в Аккаунт Врача
+    <DialogHeader className="mt-10 text-center">
+      <DialogTitle className="font-helvetica text-xl font-medium uppercase">
+        Вход в Аккаунт Врача
+      </DialogTitle>
     </DialogHeader>
     <Form className={cn('flex flex-col gap-y-5', className)}>
       <Input
@@ -31,7 +33,7 @@ const EntryForm = ({ className }: StyleProps) => (
         Регистрация врача
       </Link>
 
-      <Separator className="bg-[#B1B1B3]" />
+      <Separator />
 
       <AgreementCheckbox
         required

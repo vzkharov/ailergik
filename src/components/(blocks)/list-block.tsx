@@ -1,5 +1,5 @@
-import { ReactChildren, StyleProps } from '~/lib/types'
 import { cn } from '~/lib/utils'
+import type { StyleProps, ReactChildren } from '~/lib/types'
 
 type ListBlockProps = StyleProps & {
   children: ReactChildren

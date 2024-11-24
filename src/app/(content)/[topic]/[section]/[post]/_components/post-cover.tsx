@@ -1,3 +1,5 @@
+import { tv } from 'tailwind-variants'
+
 import { cn } from '~/lib/utils'
 import type { StyleProps } from '~/lib/types'
 
@@ -13,24 +15,34 @@ type PostCoverProps = StyleProps & {
 }
 
 const PostCover = ({ post, style, className }: PostCoverProps) => (
-  <div style={style} className={cn('relative', className)}>
+  <div style={style} className={cn(styles.root(), className)}>
     <CoverCard
-      image={post.cover}
       title={post.name}
+      image={post.cover}
       description={post.description}
-      className="h-[429px]"
+      className={styles.image()}
     />
 
-    <div className="absolute right-0 top-0 rounded-bl-md bg-[#F7F7F9] pb-3.5 pl-6">
+    <div className={styles.buttonWrapper()}>
       <Button
         variant="default"
         icon={<YouTubeIcon />}
-        className="gap-x-2 px-12 text-xs font-medium uppercase"
+        className={styles.button()}
       >
         Смотреть видео
       </Button>
     </div>
   </div>
 )
+
+const styles = tv({
+  slots: {
+    root: 'relative',
+    image: 'h-[480px] cursor-auto select-none',
+    buttonWrapper:
+      'absolute right-0 top-0 rounded-bl-md bg-background pb-3.5 pl-6',
+    button: 'gap-x-2 px-12 text-xs font-medium uppercase',
+  },
+})()
 
 export { PostCover }

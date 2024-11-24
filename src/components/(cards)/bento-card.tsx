@@ -1,21 +1,24 @@
 import Link from 'next/link'
 
 import { cn } from '~/lib/utils'
-import type { StyleProps } from '~/lib/types'
+import type { nullable, StyleProps } from '~/lib/types'
 import type { DirectusFile } from '~/lib/directus/_generated'
 
 import { DetailButton } from '~/components/(buttons)/detail-button'
 import { DirectusImage } from '~/components/(images)/directus-image'
 
 type BentoCardProps = StyleProps & {
-  href?: string
+  index: number
   title: string
-  description?: string
   image: DirectusFile
-  button?: boolean
+
+  href?: nullable<string>
+  button?: nullable<boolean>
+  description?: nullable<string>
 }
 
 const BentoCard = ({
+  index,
   href,
   title,
   image,
@@ -25,23 +28,32 @@ const BentoCard = ({
 }: BentoCardProps) => (
   <article
     style={style}
-    className={cn('w-min space-y-md overflow-hidden', className)}
+    className={cn(styles.root, styles.index[index as 0 | 1 | 2], className)}
   >
-    <DirectusImage
-      image={image}
-      className={cn('h-[360px] w-auto max-w-fit rounded-lg object-cover')}
-    />
+    <DirectusImage image={image} className={cn(styles.image)} />
 
-    <h3 className="max-w-fit">{title}</h3>
-    {description ? (
-      <p className="text-base font-normal md:text-xl">{description}</p>
-    ) : null}
+    <h3 className={styles.title}>{title}</h3>
+    {description ? <p className={styles.description}>{description}</p> : null}
     {href ? (
-      <Link href={href} className="block">
-        <DetailButton className="w-fit">Подробнее</DetailButton>
+      <Link href={href} className={styles.link}>
+        <DetailButton>Подробнее</DetailButton>
       </Link>
     ) : null}
   </article>
 )
+
+const styles = {
+  root: 'w-min space-y-md overflow-hidden',
+  image: 'h-[360px] w-auto max-w-fit rounded-lg object-cover',
+  title: 'max-w-fit line-clamp-2',
+  description: 'text-base font-normal md:text-xl line-clamp-2',
+  link: 'block [&>*]:w-fit',
+
+  index: {
+    0: 'row-span-1',
+    1: 'col-start-2 row-span-2 row-start-1 place-self-center',
+    2: 'col-span-1 row-span-2 row-start-2 place-content-center',
+  },
+}
 
 export { BentoCard }
