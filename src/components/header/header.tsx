@@ -25,7 +25,7 @@ const Header = ({ style, className }: StyleProps) => (
           <LocationButton />
         </div>
 
-        <NavigationButton className="hidden rounded-full md:inline-flex" />
+        <NavigationButton />
 
         <SearchButton className="mx-4 max-w-xl flex-1" />
 

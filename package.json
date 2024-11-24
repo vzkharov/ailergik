@@ -40,6 +40,7 @@
     "react": "19.0.0-rc-02c0e824-20241028",
     "react-cookie": "^7.2.2",
     "react-dom": "19.0.0-rc-02c0e824-20241028",
+    "react-otp-input": "3.1.1",
     "react-hook-form": "^7.53.2",
     "rehype-slug": "^6.0.0",
     "remark-flexible-toc": "^1.1.1",
