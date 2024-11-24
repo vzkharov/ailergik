@@ -38,7 +38,7 @@ const SuggestPosts = async (props: SuggestPostsProps) => {
         <CarouselContent>
           {posts.map((post, idx) => (
             <CarouselItem key={post.id} className={styles.carouselItem()}>
-              <PostCard post={post} index={idx} view="small" />
+              <PostCard post={post} index={idx} view="medium" />
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -59,7 +59,7 @@ const styles = tv({
     title: 'relative w-fit !text-3xl',
     titleBar: 'absolute bottom-0 left-6 -z-10 h-1/2 w-[95%] rounded-[8px]',
     carousel: '',
-    carouselItem: 'w-64 select-none',
+    carouselItem: 'w-72 select-none',
     link: 'w-full max-w-xl',
     linkButton: 'h-16 w-full',
   },

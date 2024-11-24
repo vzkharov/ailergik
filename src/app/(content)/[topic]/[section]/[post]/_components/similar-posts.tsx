@@ -1,13 +1,15 @@
-import Link from 'next/link'
-import { DirectusImage } from '~/components/(images)/directus-image'
-import { Title } from '~/components/title'
+import { tv } from 'tailwind-variants'
+
+import { fetchPosts } from '~/controllers/posts'
+import type { Topic, TopicSection } from '~/controllers/topics'
+
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from '~/components/ui/carousel'
-import { fetchPosts } from '~/controllers/posts'
-import { Topic, TopicSection } from '~/lib/directus/_generated'
+import { Title } from '~/components/title'
+import { PostCard } from '~/components/post-card'
 
 type SimilarPostsProps = {
   topic: Pick<Topic, 'id' | 'name' | 'slug'>
@@ -22,26 +24,18 @@ const SimilarPosts = async ({ topic, section }: SimilarPostsProps) => {
   })
 
   return (
-    <section>
-      <Title className="mb-xl">Другие статьи из раздела</Title>
-      <Carousel>
-        <CarouselContent>
+    <section className={styles.root()}>
+      <Title className={styles.title()}>Другие статьи из раздела</Title>
+      <Carousel className={styles.carousel()}>
+        <CarouselContent className={styles.carouselContent()}>
           {posts.map(post => (
-            <CarouselItem key={post.slug} className="max-w-44">
-              <div className="relative max-w-40 select-none">
-                <DirectusImage
-                  image={post.cover}
-                  className="h-40 w-40 rounded-md"
-                />
-
-                <span className="mt-2 line-clamp-2 w-40 max-w-40 text-sm font-medium">
-                  {post.name}
-                </span>
-                <Link
-                  href={'/' + topic.slug + '/' + post.slug}
-                  className="absolute inset-0 transition-all hover:bg-background/40"
-                />
-              </div>
+            <CarouselItem key={post.slug} className={styles.carouselItem()}>
+              <PostCard
+                index={0}
+                post={post}
+                view="small"
+                className={styles.card()}
+              />
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -49,5 +43,16 @@ const SimilarPosts = async ({ topic, section }: SimilarPostsProps) => {
     </section>
   )
 }
+
+const styles = tv({
+  slots: {
+    root: '',
+    title: 'mb-xl',
+    carousel: '',
+    carouselContent: '',
+    carouselItem: 'max-w-64 flex-1',
+    card: 'h-full',
+  },
+})()
 
 export { SimilarPosts }
