@@ -4,7 +4,7 @@ import { PostCard } from '~/components/post-card'
 
 import { styles } from './styles'
 
-type PostsListProps = {
+type ComponentProps = {
   topicId?: string
   sectionId?: string
   subsectionId?: string
@@ -13,7 +13,7 @@ type PostsListProps = {
   count?: number
 }
 
-const PostsList = async (props: PostsListProps) => {
+const Component = async (props: ComponentProps) => {
   const { topicId, sectionId, subsectionId, count = 9, page = 1 } = props
 
   const posts = await fetchPosts({
@@ -26,10 +26,10 @@ const PostsList = async (props: PostsListProps) => {
 
   return (
     <section className={styles.root()}>
-      {posts.map(post => (
+      {posts.map((post, idx) => (
         <PostCard
           key={post.slug}
-          index={0}
+          index={idx}
           post={post}
           view="small"
           className={styles.card()}
@@ -39,4 +39,5 @@ const PostsList = async (props: PostsListProps) => {
   )
 }
 
-export { PostsList }
+export { Component }
+export type { ComponentProps }

@@ -3,7 +3,7 @@ type AnyObject = {
   [x: string | number | symbol]: unknown
 }
 type ArrowFunction<P extends Array<unknown> = [], R = unknown> = (
-  ...arguments_: P
+  ..._arguments: P
 ) => R
 
 type As = keyof JSX.IntrinsicElements

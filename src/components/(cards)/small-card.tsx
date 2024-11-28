@@ -42,7 +42,7 @@ const SmallCard = ({
 const styles = tv({
   slots: {
     root: 'group relative flex w-full cursor-pointer flex-col',
-    image: 'aspect-[4/3] w-full max-w-72 rounded-sm object-cover',
+    image: 'aspect-[4/3] w-full rounded-sm object-cover',
     title: 'mt-md line-clamp-2 text-sm',
     footer: 'mt-auto',
     button: 'gap-x-1',

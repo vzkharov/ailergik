@@ -27,6 +27,7 @@ type Params = {
 
 const TopicPage: Page<Params> = async props => {
   const params = await props.params
+
   const slug = params.topic
 
   const topic = await fetchTopicBySlug(slug)
@@ -35,7 +36,7 @@ const TopicPage: Page<Params> = async props => {
     notFound()
   }
 
-  const sections = await fetchTopicSections().then(items => items.slice(0, 4))
+  const sections = await fetchTopicSections()
 
   return (
     <>
@@ -73,9 +74,6 @@ const TopicPage: Page<Params> = async props => {
     </>
   )
 }
-
-export const dynamic = 'force-dynamic'
-export const fetchCache = 'default-no-store'
 
 export const generateStaticParams = async (): Promise<Params[]> => {
   const topics = await fetchTopics()

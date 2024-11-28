@@ -22,10 +22,9 @@ const fetchPosts = ({
   client.request(
     readItems('post', {
       page,
-
       fields: fields.full,
       limit: count ?? 999,
-      sort: 'date_created',
+      sort: '-date_created',
       filter: {
         ...filters.published,
         topic: { _eq: topic },

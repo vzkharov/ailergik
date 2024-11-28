@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { ReactChildren } from '~/lib/types'
+
+import type { ReactChildren } from '~/lib/types'
 
 type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
   InputVariants & {
@@ -27,7 +28,6 @@ Input.displayName = 'Input'
 const inputVariants = cva(
   [
     'flex h-10 w-full py-2 text-sm ring-offset-background',
-    'placeholder:text-muted-foreground placeholder:italic',
     'file:border-0 file:bg-transparent file:text-sm file:font-medium',
     'focus-visible:outline-none',
     'disabled:cursor-not-allowed disabled:opacity-50',
@@ -35,9 +35,16 @@ const inputVariants = cva(
   {
     variants: {
       variant: {
-        solid:
-          'px-3 py-5 rounded-full bg-background focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2',
-        outline: 'bg-transparent border-b border-foreground',
+        solid: [
+          'px-3 py-5 rounded-full bg-background ',
+          'focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2',
+          'placeholder:italic placeholder:text-muted-foreground',
+        ],
+        outline: [
+          'bg-transparent border-b border-foreground',
+          'font-medium font-foreground',
+          'placeholder:font-medium placeholder:uppercase placeholder:not-italic placeholder:text-foreground',
+        ],
       },
     },
     defaultVariants: {

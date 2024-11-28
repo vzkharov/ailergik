@@ -1,7 +1,7 @@
 import Link from 'next/link'
+import { tv } from 'tailwind-variants'
 
-import { cn } from '~/lib/utils'
-import { StyleProps } from '~/lib/types'
+import type { StyleProps } from '~/lib/types'
 
 import { Button } from '~/components/ui/button'
 
@@ -16,32 +16,47 @@ import { LocationButton } from '~/components/(buttons)/location-button'
 import { NavigationButton } from '~/components/(buttons)/navigatin-button'
 
 const Header = ({ style, className }: StyleProps) => (
-  <header style={style} className={cn('fixed top-xl z-50 w-full', className)}>
-    <div className="container mx-auto w-full">
-      <div className="flex items-center justify-between gap-4 rounded-full bg-white px-6 py-[18px] backdrop-blur-md">
-        <div className="flex items-center gap-6">
-          <Logo />
+  <header style={style} className={styles.root({ className })}>
+    <div className={styles.header()}>
+      <div className={styles.headerInner()}>
+        <Logo />
 
-          <LocationButton />
-        </div>
+        <LocationButton />
 
         <NavigationButton />
 
-        <SearchButton className="mx-4 max-w-xl flex-1" />
+        <SearchButton className={styles.search()} />
 
-        <div className="flex items-center gap-x-sm">
+        <div className={styles.buttonsContainer()}>
           <Link href="/emergency">
             <Button size="icon" variant="destructive" title="Экстренная помощь">
-              <EmergencyIcon className="h-6 w-6 -translate-y-px" />
+              <EmergencyIcon className={styles.emergencyButton()} />
             </Button>
           </Link>
-          <BookmarkIcon className="h-7 w-7" />
-          <HeartIcon className="h-7 w-7" />
-          <AuthButton className="hidden md:inline-flex" />
+          <BookmarkIcon className={styles.bookmarkButton()} />
+          <HeartIcon className={styles.likeButton()} />
+          <AuthButton className={styles.authButton()} />
         </div>
       </div>
     </div>
   </header>
 )
+
+const styles = tv({
+  slots: {
+    root: 'fixed top-xl z-50 w-full',
+    header: 'container mx-auto w-full',
+    headerInner:
+      'flex items-center justify-between gap-6 rounded-full bg-white px-6 py-4 backdrop-blur-md',
+
+    search: 'mx-4 max-w-xl flex-1',
+
+    buttonsContainer: 'flex items-center gap-x-sm',
+    emergencyButton: 'h-6 w-6 -translate-y-px',
+    likeButton: 'h-7 w-7',
+    bookmarkButton: 'h-7 w-7',
+    authButton: 'hidden md:inline-flex',
+  },
+})()
 
 export { Header }

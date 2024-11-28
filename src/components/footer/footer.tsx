@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { tv } from 'tailwind-variants'
 
 import { Separator } from '~/components/ui/separator'
 import { OrganizationCopyright } from '~/components/organization-copyright'
@@ -6,8 +7,8 @@ import { OrganizationCopyright } from '~/components/organization-copyright'
 import { FooterColumn } from './footer-column'
 
 const Footer = () => (
-  <footer className="gap-y-lg flex flex-col bg-[#EDEDEF] pt-8 text-sm [&>*]:container">
-    <div className="flex justify-between">
+  <footer className={styles.root()}>
+    <div className={styles.columns()}>
       <FooterColumn
         title="ИНФОРМАЦИЯ:"
         links={[
@@ -38,7 +39,7 @@ const Footer = () => (
         ]}
       />
 
-      <p className="max-w-40 text-right text-xs italic text-muted-foreground">
+      <p className={styles.note()}>
         Перепечатка материалов AiLergik возможна только с письменного разрешения
         владельца сайта.
       </p>
@@ -58,10 +59,19 @@ const Footer = () => (
         alt="footer logo"
         width={1236}
         height={347}
-        className="h-auto w-full"
+        className={styles.logo()}
       />
     </div>
   </footer>
 )
+
+const styles = tv({
+  slots: {
+    root: 'flex flex-col gap-y-lg bg-[#EDEDEF] pt-8 text-sm [&>*]:container',
+    columns: 'flex justify-between',
+    note: 'max-w-40 text-right text-xs italic text-muted-foreground',
+    logo: 'h-auto w-full',
+  },
+})()
 
 export { Footer }

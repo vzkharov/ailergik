@@ -1,14 +1,15 @@
-import { Suspense } from 'react'
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+import { DOMAIN_URL } from '~/env'
 import type { Page } from '~/lib/types'
 
 import {
   fetchTopics,
   fetchTopicBySlug,
   fetchTopicSections,
-  fetchTopicSectionBySlug,
   fetchTopicSubsections,
+  fetchTopicSectionBySlug,
 } from '~/controllers/topics'
 import { convertRawState } from '~/features/(posts)/use-posts-filter-state/utils'
 
@@ -18,8 +19,8 @@ import { NavigationBreadcrumbs } from '~/components/navigation-breadcrumbs'
 import { TopicToC } from '~/modules/topic-toc'
 import { StyleAccent } from '~/modules/style-accent'
 
+import { PostsList } from './_components/posts-list'
 import { PostsFilterType } from './_components/posts-filter'
-import { PostsList, PostsLoading } from './_components/posts-list'
 
 import { styles } from './styles'
 
@@ -38,10 +39,8 @@ const SectionPage: Page<Params, SearchParams> = async props => {
 
   const topicSlug = params.topic
   const sectionSlug = params.section
-
-  const { page, subsection: subsectionSlug } = convertRawState(
-    searchParams.state,
-  )
+  const searchState = searchParams.state
+  const { page, subsection: subsectionSlug } = convertRawState(searchState)
 
   const topic = await fetchTopicBySlug(topicSlug)
   const section = await fetchTopicSectionBySlug(sectionSlug)
@@ -82,20 +81,15 @@ const SectionPage: Page<Params, SearchParams> = async props => {
         />
         <div className={styles.content()}>
           <PostsFilterType subsections={subsections} />
-          <Suspense
-            fallback={<PostsLoading count={5} />}
-            key={[page, subsectionSlug].join('-')}
-          >
-            <PostsList
-              page={page}
-              count={30}
-              topicId={topic.id ? String(topic.id) : undefined}
-              sectionId={section.id ? String(section.id) : undefined}
-              subsectionId={
-                currSubsection ? String(currSubsection?.id) : undefined
-              }
-            />
-          </Suspense>
+          <PostsList
+            page={page}
+            count={30}
+            topicId={topic.id ? String(topic.id) : undefined}
+            sectionId={section.id ? String(section.id) : undefined}
+            subsectionId={
+              currSubsection ? String(currSubsection?.id) : undefined
+            }
+          />
         </div>
       </div>
 
@@ -120,6 +114,52 @@ export const generateStaticParams = async (): Promise<Params[]> => {
   )
 
   return params
+}
+
+export const generateMetadata = async (props: {
+  params: Promise<Params>
+}): Promise<Metadata> => {
+  const params = await props.params
+
+  const topicSlug = params.topic
+  const sectionSlug = params.section
+
+  const topic = await fetchTopicBySlug(topicSlug)
+  const section = await fetchTopicSectionBySlug(sectionSlug)
+
+  if (!section || !topic) {
+    notFound()
+  }
+
+  const path = [topic.slug, section.slug].join('/')
+
+  const title = [section.name, topic.name, topic.description].join(' - ')
+  const description = topic.description ?? undefined
+  const cover = {
+    alt: title,
+    width: topic.cover.width ?? undefined,
+    height: topic.cover.height ?? undefined,
+    url: ['https://cms.allergik.by/assets', topic.cover.id].join('/'),
+  }
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: new URL(path, DOMAIN_URL),
+    },
+    twitter: {
+      card: 'summary',
+      site: 'allergik',
+      images: [cover],
+    },
+    openGraph: {
+      title,
+      description,
+      images: [cover],
+      type: 'website',
+    },
+  }
 }
 
 export default SectionPage

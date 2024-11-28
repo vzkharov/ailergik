@@ -3,7 +3,7 @@ import './globals.css'
 import type { Metadata, Viewport } from 'next'
 
 import type { Layout } from '~/lib/types'
-import { rootMetadata } from '~/lib/metadata'
+import { metadatas } from '~/lib/metadata'
 import { fontsClassName } from '~/lib/fonts'
 
 import { Footer } from '~/components/footer'
@@ -31,7 +31,7 @@ const Root: Layout = ({ children }) => (
   </html>
 )
 
-export const metadata: Metadata = rootMetadata
+export const metadata: Metadata = metadatas.default
 
 export const viewport: Viewport = {
   initialScale: 1,

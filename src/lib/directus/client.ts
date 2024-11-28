@@ -5,25 +5,12 @@ import { DIRECTUS_HOST } from '~/env'
 import type { Schema } from './_generated'
 
 const client = createDirectus<Schema>(DIRECTUS_HOST)
-  .with(authentication())
-  .with(rest())
+  .with(authentication('cookie', { autoRefresh: true, credentials: 'include' }))
+  .with(
+    rest({
+      credentials: 'include',
+      onRequest: options => ({ ...options, cache: 'no-store' }),
+    }),
+  )
 
-// type CreateFetchOptions<TArgs, TData> = {
-//   fetch: (args: TArgs) => Promise<TData>
-// }
-
-// const createFetch = <TArgs, TData>({
-//   fetch: fetchData,
-// }: CreateFetchOptions<TArgs, TData>) => {
-//   return async (args: TArgs) => {
-//     try {
-//       const data = await fetchData(args)
-//       return data
-//     } catch (error) {
-//       console.error(error)
-//       return
-//     }
-//   }
-// }
-
-export { client }
+export { client, client as directus }

@@ -50,8 +50,8 @@ const styles = tv({
     title: 'mb-xl',
     carousel: '',
     carouselContent: '',
-    carouselItem: 'max-w-64 flex-1',
-    card: 'h-full',
+    carouselItem: 'w-64',
+    card: 'w-full h-full',
   },
 })()
 

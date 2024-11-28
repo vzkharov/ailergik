@@ -42,15 +42,15 @@ const MenuPopover = ({ style, className, items }: MenuPopoverProps) => {
     },
     ...items,
     {
-      href: '/',
+      href: '/parners',
       name: 'Партнерам',
     },
     {
-      href: '/',
+      href: '/advertisment',
       name: 'Реклама',
     },
     {
-      href: '/',
+      href: '/contacts',
       name: 'Контакты',
     },
   ]
