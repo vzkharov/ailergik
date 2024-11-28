@@ -19,7 +19,6 @@ import { TopicToC } from '~/modules/topic-toc'
 import { StyleAccent } from '~/modules/style-accent'
 
 import { PostsFilterType } from './_components/posts-filter'
-import { PostsPagination } from './_components/posts-pagination'
 import { PostsList, PostsLoading } from './_components/posts-list'
 
 import { styles } from './styles'
@@ -69,9 +68,7 @@ const SectionPage: Page<Params, SearchParams> = async props => {
       <NavigationBreadcrumbs
         items={[
           { name: topic.name, href: '/' + topic.slug },
-          {
-            name: section.name,
-          },
+          { name: section.name },
         ]}
       />
 
@@ -86,11 +83,12 @@ const SectionPage: Page<Params, SearchParams> = async props => {
         <div className={styles.content()}>
           <PostsFilterType subsections={subsections} />
           <Suspense
+            fallback={<PostsLoading count={5} />}
             key={[page, subsectionSlug].join('-')}
-            fallback={<PostsLoading />}
           >
             <PostsList
               page={page}
+              count={30}
               topicId={topic.id ? String(topic.id) : undefined}
               sectionId={section.id ? String(section.id) : undefined}
               subsectionId={
@@ -98,7 +96,6 @@ const SectionPage: Page<Params, SearchParams> = async props => {
               }
             />
           </Suspense>
-          <PostsPagination total={4} />
         </div>
       </div>
 

@@ -27,7 +27,13 @@ const PostsList = async (props: PostsListProps) => {
   return (
     <section className={styles.root()}>
       {posts.map(post => (
-        <PostCard key={post.slug} index={0} post={post} view="small" />
+        <PostCard
+          key={post.slug}
+          index={0}
+          post={post}
+          view="small"
+          className={styles.card()}
+        />
       ))}
     </section>
   )
