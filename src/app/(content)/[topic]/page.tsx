@@ -74,6 +74,9 @@ const TopicPage: Page<Params> = async props => {
   )
 }
 
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'default-no-store'
+
 export const generateStaticParams = async (): Promise<Params[]> => {
   const topics = await fetchTopics()
 

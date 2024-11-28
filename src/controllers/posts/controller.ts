@@ -5,17 +5,25 @@ import { client } from '~/lib/directus/client'
 import { fields, filters } from './utils'
 
 type SearchParams = {
+  page?: number
   count?: number
   topic?: string
   section?: string
   subsection?: string
 }
 
-const fetchPosts = ({ topic, section, subsection, count }: SearchParams = {}) =>
+const fetchPosts = ({
+  count,
+  topic,
+  section,
+  subsection,
+  page = 1,
+}: SearchParams = {}) =>
   client.request(
     readItems('post', {
+      page,
+
       fields: fields.full,
-      page: 1,
       limit: count ?? 999,
       sort: 'date_created',
       filter: {

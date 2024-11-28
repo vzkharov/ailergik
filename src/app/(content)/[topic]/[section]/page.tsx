@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
 
 import type { Page } from '~/lib/types'
@@ -7,7 +8,9 @@ import {
   fetchTopicBySlug,
   fetchTopicSections,
   fetchTopicSectionBySlug,
+  fetchTopicSubsections,
 } from '~/controllers/topics'
+import { convertRawState } from '~/features/(posts)/use-posts-filter-state/utils'
 
 import { Spacer } from '~/components/ui/spacer'
 import { NavigationBreadcrumbs } from '~/components/navigation-breadcrumbs'
@@ -15,7 +18,9 @@ import { NavigationBreadcrumbs } from '~/components/navigation-breadcrumbs'
 import { TopicToC } from '~/modules/topic-toc'
 import { StyleAccent } from '~/modules/style-accent'
 
-import { SectionPosts } from './_components/section-posts'
+import { PostsFilterType } from './_components/posts-filter'
+import { PostsPagination } from './_components/posts-pagination'
+import { PostsList, PostsLoading } from './_components/posts-list'
 
 import { styles } from './styles'
 
@@ -24,14 +29,34 @@ type Params = {
   section: string
 }
 
-const SectionPage: Page<Params> = async props => {
+type SearchParams = {
+  state?: string
+}
+
+const SectionPage: Page<Params, SearchParams> = async props => {
   const params = await props.params
+  const searchParams = await props.searchParams
 
   const topicSlug = params.topic
   const sectionSlug = params.section
 
+  const { page, subsection: subsectionSlug } = convertRawState(
+    searchParams.state,
+  )
+
   const topic = await fetchTopicBySlug(topicSlug)
   const section = await fetchTopicSectionBySlug(sectionSlug)
+
+  const subsections = await fetchTopicSubsections().then(items =>
+    items.filter(
+      item =>
+        !!section.subsections?.find(subsection => subsection.id === item.id),
+    ),
+  )
+
+  const currSubsection = subsections.find(
+    subsection => subsection.slug === subsectionSlug,
+  )
 
   if (!section || !topic) {
     notFound()
@@ -59,7 +84,21 @@ const SectionPage: Page<Params> = async props => {
           className={styles.toc()}
         />
         <div className={styles.content()}>
-          <SectionPosts topic={topic} section={section} />
+          <PostsFilterType subsections={subsections} />
+          <Suspense
+            key={[page, subsectionSlug].join('-')}
+            fallback={<PostsLoading />}
+          >
+            <PostsList
+              page={page}
+              topicId={topic.id ? String(topic.id) : undefined}
+              sectionId={section.id ? String(section.id) : undefined}
+              subsectionId={
+                currSubsection ? String(currSubsection?.id) : undefined
+              }
+            />
+          </Suspense>
+          <PostsPagination total={4} />
         </div>
       </div>
 

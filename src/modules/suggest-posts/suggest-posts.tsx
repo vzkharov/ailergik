@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { tv } from 'tailwind-variants'
 
 import type { StyleProps } from '~/lib/types'
@@ -11,9 +12,8 @@ import {
   CarouselContent,
 } from '~/components/ui/carousel'
 import { Title } from '~/components/title'
-import { PostCard } from '~/components/post-card'
 import { Button } from '~/components/ui/button'
-import Link from 'next/link'
+import { PostCard } from '~/components/post-card'
 
 type SuggestPostsProps = StyleProps & {
   count?: number
