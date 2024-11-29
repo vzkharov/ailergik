@@ -9,7 +9,7 @@ const ContactsCard = () => (
           наши контакты
         </h3>
 
-        <h5 className="mb-14 w-full text-center font-helveticaLight text-xl">
+        <h5 className="mb-14 w-full text-center text-lg leading-5 max-md:text-md">
           Если у вас есть вопросы или предложения, присылайте по адресу
           hello@ailergik.by <br /> Свяжитесь с нами через соц сети или по
           телефону:

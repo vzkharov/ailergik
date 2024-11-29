@@ -39,7 +39,7 @@ const PartnersPage: Page = () => (
         src="/partners/welcome.png"
         width={1128}
         height={572}
-        className="max-md:h-[450px] max-md:rounded-3xl"
+        className="max-md:h-[450px] max-md:rounded-xl"
       />
 
       <Card className="max-md:bottom-0 max-md:left-0">
@@ -52,10 +52,8 @@ const PartnersPage: Page = () => (
     </div>
 
     <div className="flex flex-col items-center justify-center gap-y-5 text-center">
-      <h1 className="font-helveticaLight uppercase max-md:font-helveticaMedium">
-        {title}
-      </h1>
-      <h5>{subtitle}</h5>
+      <h2 className="font-normal uppercase">{title}</h2>
+      <p className="text-lg">{subtitle}</p>
     </div>
 
     <Separator />
@@ -63,7 +61,7 @@ const PartnersPage: Page = () => (
     <Section id={navigation.benefits.id}>
       <HighlightedTitle>Что вы получите?</HighlightedTitle>
 
-      <Spacer y="3xl" />
+      <Spacer y="xl" />
 
       <SectionBenefit />
     </Section>
@@ -75,16 +73,16 @@ const PartnersPage: Page = () => (
         Основные разделы веб-сервиса
       </HighlightedTitle>
 
-      <Spacer y="3xl" />
+      <Spacer y="xl" />
 
-      <h5 className="text-center">
+      <h5 className="text-center text-lg">
         Мы предоставляем важную информацию, которую необходимо знать всем, кто
         страдает от аллергии, инновационные программы, которые позволят вам и
         другим людям быть в курсе последних событий, а также услуги поддержки,
         которые сделают жизнь людей с аллергией более комфортной.
       </h5>
 
-      <Spacer y="xl" />
+      <Spacer y="3xl" />
 
       <SectionTopic />
     </Section>
@@ -97,15 +95,13 @@ const PartnersPage: Page = () => (
         пользователей решает ailergik
       </HighlightedTitle>
 
-      <Spacer y="3xl" />
-
       <SectionProblems />
     </Section>
 
     <Separator />
 
     <Section id={navigation.funcs.id}>
-      <HighlightedTitle className="max-md:after:right-12 max-md:after:w-[60%]">
+      <HighlightedTitle className="after:right-20 after:w-[74%] max-md:after:right-12 max-md:after:w-[60%]">
         КАКИЕ ФУНКЦИИ ДЛЯ ПОЛЬЗОВАТЕЛЕЙ МЫ ВНЕДРИЛИ В ВЕБ-ПРИЛОЖЕНИЕ?
       </HighlightedTitle>
 

@@ -19,11 +19,11 @@ const buttonVariants = cva(
         destructive:
           'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         outline:
-          'uppercase border border-foreground text-foreground bg-transparent gap-x-3 !px-6 py-3 font-helveticaMedium hover:text-white hover:bg-foreground',
+          'uppercase border border-foreground text-foreground bg-transparent gap-x-3 !px-6 py-3  hover:text-white hover:bg-foreground',
         colored:
           'bg-[#142850] text-white font-helveticaLight uppercas !px-7 !py-5',
         regular:
-          'uppercase border border-foreground text-foreground bg-transparent gap-x-3 !px-6 py-3 font-helveticaMedium',
+          'uppercase border border-foreground text-foreground bg-transparent gap-x-3 !px-6 py-3 ',
         otp: 'cursor-pointer border-0 !px-0 font-helvetica text-xs font-bold underline',
         secondary:
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',

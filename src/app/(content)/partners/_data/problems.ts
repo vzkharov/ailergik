@@ -3,7 +3,6 @@ type PartnerProblem = {
   img: string
   title: string
   description: string
-  imageClassName: string
 }
 
 const problems = [
@@ -12,7 +11,6 @@ const problems = [
     img: '/partners/problems/_1.png',
     title: 'Экономит время пользователей',
     description: 'Все необходимые сервисы в одном веб-приложении',
-    imageClassName: 'w-[456]',
   },
   {
     id: '2',
@@ -20,14 +18,12 @@ const problems = [
     title: 'Полная и достоверная информация',
     description:
       'Сотни статей с информацией на основе официальных источников доказательной медицины',
-    imageClassName: 'w-[456]',
   },
   {
     id: '3',
     img: '/partners/problems/_3.png',
     title: 'Ваш личный аллерголог всегда на связи',
     description: 'Онлайн-консультация с практикующими опытными врачами',
-    imageClassName: 'w-[553]',
   },
 ] satisfies PartnerProblem[]
 
