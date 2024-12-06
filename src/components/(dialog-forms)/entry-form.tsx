@@ -1,7 +1,6 @@
 import { cn } from '~/lib/utils'
 import { StyleProps } from '~/lib/types'
 
-import { Form, SubmitButton } from '../form'
 import { Link } from '../ui/link'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
@@ -9,6 +8,7 @@ import { Button } from '../ui/button'
 import { DialogContent, DialogHeader, DialogTitle } from '../ui/dialog'
 import { Separator } from '~/components/ui/separator'
 import { AgreementCheckbox } from '../(buttons)/agreement-checkbox'
+import { SubmitButton } from '../modules/be-partner-form/be-partner-form'
 
 const EntryForm = ({ className }: StyleProps) => (
   <DialogContent className="bg-white/80 p-6 backdrop-blur-md">
@@ -17,8 +17,9 @@ const EntryForm = ({ className }: StyleProps) => (
         Вход в Аккаунт Врача
       </DialogTitle>
     </DialogHeader>
-    <Form className={cn('flex flex-col gap-y-5', className)}>
+    <form className={cn('flex flex-col gap-y-5', className)}>
       <Input
+        type="tel"
         placeholder="Введите ваш телефон*"
         variant="outline"
         className="my-2"
@@ -53,7 +54,7 @@ const EntryForm = ({ className }: StyleProps) => (
         legal="Политикой обработки персональных данных"
         href=""
       />
-    </Form>
+    </form>
   </DialogContent>
 )
 
