@@ -1,4 +1,6 @@
+import { JoinForm } from '~/components/(dialog-forms)/join-form'
 import { Button } from '~/components/ui/button'
+import { Dialog, DialogTrigger } from '~/components/ui/dialog'
 
 const JoinCard = () => (
   <div className="rounded-[35px] bg-[#9ED8F6]">
@@ -11,12 +13,17 @@ const JoinCard = () => (
         опасными для жизни аллергиями с помощью информации на веб-сервисе.
       </h5>
 
-      <Button
-        variant="colored"
-        className="h-14 w-full max-w-[900px] rounded-full uppercase"
-      >
-        Стать партнером сервиса
-      </Button>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button
+            variant="colored"
+            className="h-14 w-full max-w-[900px] rounded-full uppercase"
+          >
+            Стать партнером сервиса
+          </Button>
+        </DialogTrigger>
+        <JoinForm />
+      </Dialog>
     </div>
   </div>
 )

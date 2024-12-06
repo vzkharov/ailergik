@@ -2,10 +2,11 @@ import { cn } from '~/lib/utils'
 import { StyleProps } from '~/lib/types'
 
 import { Input } from '../ui/input'
-import { SubmitButton } from '../form'
+
 import { Separator } from '~/components/ui/separator'
 import { AgreementCheckbox } from '../(buttons)/agreement-checkbox'
 import { DialogContent, DialogHeader } from '../ui/dialog'
+import { SubmitButton } from '../modules/be-partner-form/be-partner-form'
 
 const RegistryForm = ({ className }: StyleProps) => (
   <DialogContent className="bg-white/80 p-6 backdrop-blur-md">
@@ -15,12 +16,14 @@ const RegistryForm = ({ className }: StyleProps) => (
 
     <form className={cn('flex flex-col gap-y-5', className)}>
       <Input
+        type="tel"
         placeholder="Введите ваш телефон*"
         variant="outline"
         className="my-2"
       />
 
       <Input
+        type="email"
         placeholder="Введите ваш e-mail"
         variant="outline"
         className="my-2"

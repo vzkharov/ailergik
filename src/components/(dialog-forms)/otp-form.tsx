@@ -7,11 +7,10 @@ import { StyleProps } from '~/lib/types'
 
 import OtpInput from 'react-otp-input'
 
-import { SubmitButton } from '../form'
-
 import { Text } from '../ui/text'
 import { Button } from '../ui/button'
 import { DialogContent, DialogDescription, DialogHeader } from '../ui/dialog'
+import { SubmitButton } from '../modules/be-partner-form/be-partner-form'
 
 const OtpForm = ({ className }: StyleProps) => {
   const [otp, setOtp] = useState('')
