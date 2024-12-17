@@ -21,9 +21,7 @@ const DoctorCard = ({ img, title, style, className }: DoctorCardProps) => (
       height={200}
       className="w-[230px] rounded-full border border-[#142850] p-2"
     />
-    <Text className="font-helveticaItalicLight text-base text-center">
-      {title}
-    </Text>
+    <Text className="text-center text-md font-medium italic">{title}</Text>
   </article>
 )
 

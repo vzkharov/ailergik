@@ -22,7 +22,7 @@ const SectionDoctors = ({ style, className }: StyleProps) => (
 
     <Spacer y="3xl" />
 
-    <h5 className="text-center">
+    <h5 className="text-center text-lg leading-5 max-md:text-md">
       Мы - за комплексный подход, это принципиально. Кроме аллерголога
       иммунолога мы пригласили врачей экспертов из сопутствующих специализаций -
       дерматолога, невролога, гастроэнтеролога, педиатра и других...

@@ -30,19 +30,23 @@ const TopicCard = ({
 }: TopicCardProps) => (
   <article
     style={style}
-    className={cn('flex w-full items-center gap-2 md:h-16', className)}
+    className={cn('flex w-full items-center gap-2 md:h-11', className)}
   >
-    <div className="flex-1 space-y-1 self-start group-[[data-state=open]]/accordion-trigger:hidden">
-      <p className="flex w-full items-center text-start font-helveticaItalicLight text-sm md:justify-between md:text-base">
+    <div className="flex-1 space-y-2 self-start group-[[data-state=open]]/accordion-trigger:hidden">
+      <p className="flex w-full items-center text-start text-sm font-normal md:justify-between md:text-md">
         {description}
       </p>
-      <h4 className="text-start">{title}</h4>
+      <h4 className="text-start text-xl font-medium">{title}</h4>
     </div>
-    <h6 className="w-full text-start group-[[data-state=closed]]/accordion-trigger:hidden">
+    <h6 className="w-full text-start text-xl font-medium group-[[data-state=closed]]/accordion-trigger:hidden md:text-2xl">
       {title}
     </h6>
-    <DetailButton className="border-none group-[[data-state=open]]/accordion-trigger:hidden max-md:[&>div]:hidden" />
     <DetailButton
+      hideChildrenOnMobile
+      className="border-none group-[[data-state=open]]/accordion-trigger:hidden max-md:[&>div]:hidden"
+    />
+    <DetailButton
+      hideChildrenOnMobile
       rotate
       className="hidden border-none group-[[data-state=open]]/accordion-trigger:inline-flex max-md:[&>div]:hidden"
     >
@@ -52,14 +56,12 @@ const TopicCard = ({
 )
 
 const TopicContent = ({ content, images }: TopicContentProps) => (
-  <article className="flex flex-col-reverse gap-10 md:flex-row md:px-8">
+  <article className="flex flex-col-reverse gap-10 md:mb-10 md:mt-4 md:flex-row md:px-8">
     <div className="flex-1 space-y-5 md:space-y-10">
       {content.map((block, index) => (
         <div key={index} className="space-y-2">
-          <h5 className="text-xl uppercase">{block.title}</h5>
-          <p className="font-helveticaLight text-base leading-5">
-            {block.text}
-          </p>
+          <h5 className="text-lg uppercase">{block.title}</h5>
+          <p className="text-sm leading-5">{block.text}</p>
         </div>
       ))}
 

@@ -9,7 +9,6 @@ type BlogCardProps = StyleProps & {
   description?: string
   img: string
   button?: boolean
-  imageClassName: string
 }
 
 const BlogCard = ({
@@ -18,27 +17,22 @@ const BlogCard = ({
   description,
   button = false,
   style,
-  imageClassName,
   className,
 }: BlogCardProps) => (
   <article
     style={style}
-    className={cn(
-      'w-full space-y-4 overflow-hidden',
-      className,
-      imageClassName,
-    )}
+    className={cn('w-full space-y-4 overflow-hidden', className)}
   >
     <Image
       src={img}
       alt={title}
-      className={cn('rounded-lg object-cover', imageClassName)}
+      className={cn(
+        'h-[250px] w-auto rounded-xl object-cover md:h-auto md:w-auto',
+      )}
     />
 
-    <h3> {title}</h3>
-    {description ? (
-      <p className="font-helveticaLight text-base md:text-xl">{description}</p>
-    ) : null}
+    <h3 className=""> {title}</h3>
+    {description ? <p className="text-md md:text-lg">{description}</p> : null}
     {button ? <DetailButton className="w-fit">Подробнее</DetailButton> : null}
   </article>
 )

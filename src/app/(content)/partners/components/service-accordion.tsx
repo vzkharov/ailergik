@@ -46,12 +46,10 @@ const ServiceAccordionItem = ({
         {content.map((item, index) => (
           <div key={index} className="flex border-l-2 border-l-[#9ED8F6]">
             <div className="ml-5 flex flex-col items-start gap-y-5">
-              <h5 className="font-helveticaMedium text-sm uppercase">
+              <h5 className="text-sm font-medium uppercase leading-4">
                 {item.title}
               </h5>
-              <p className="font-helveticaLight text-xs leading-5 md:text-base">
-                {item.text}
-              </p>
+              <p className="text-sm leading-5 md:text-md">{item.text}</p>
             </div>
           </div>
         ))}

@@ -117,7 +117,7 @@ const topics = [
         text: 'Приглашаем интернет-магазины с полезными товарами для путешествий',
       },
     ],
-    image: ['/partners/topics/house_1.png', '/partners/topics/house_1.png'],
+    image: ['/partners/topics/tourism_1.png', '/partners/topics/tourism_1.png'],
   },
 ] satisfies PartnerTopic[]
 

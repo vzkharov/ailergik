@@ -8,15 +8,22 @@ const DetailButton = ({
   rotate = false,
   variant = 'outline',
   children = 'ПОДРОБНЕЕ',
+  hideChildrenOnMobile = false,
   ...props
-}: ButtonProps & { rotate?: boolean }) => (
+}: ButtonProps & { rotate?: boolean; hideChildrenOnMobile?: boolean }) => (
   <Button
     {...props}
     variant={variant}
     className={cn('group/detail w-fit gap-x-sm', className)}
     icon={<ArrowIcon className={cn('', rotate ? '-rotate-90' : '')} />}
   >
-    {children}
+    <span
+      className={cn({
+        'hidden md:inline': hideChildrenOnMobile,
+      })}
+    >
+      {children}
+    </span>
   </Button>
 )
 
