@@ -3,6 +3,7 @@
  * */
 
 export const NODE_ENV = process.env.NODE_ENV ?? 'development'
+export const IS_PRODUCTION = process.env.NODE_ENV === 'production'
 
 export const DOMAIN = process.env.DOMAIN ?? 'localhost:3000'
 export const DOMAIN_URL = process.env.DOMAIN_URL ?? 'http://localhost:3000'
@@ -24,6 +25,22 @@ export const DIRECTUS_PASSWORD = process.env.DIRECTUS_PASSWORD ?? ''
 export const DIRECTUS_TOKEN = process.env.DIRECTUS_TOKEN ?? ''
 
 /**
+ * @description auth vars
+ */
+export const JWT_SECRET = process.env.JWT_SECRET ?? ''
+export const JWT_EXPIRED_MS = Number.parseInt(
+  process.env.JWT_EXPIRED_MS ?? '31536000000',
+)
+export const UPSTASH_REDIS_URL = process.env.UPSTASH_REDIS_URL ?? ''
+export const UPSTASH_REDIS_TOKEN = process.env.UPSTASH_REDIS_TOKEN ?? ''
+
+/**
  * @description 1 pathname while developing
  */
 export const IS_REDIRECT_PARTNERS = process.env.IS_REDIRECT_PARTNERS === 'true'
+
+/**
+ * @description development protection
+ */
+export const IS_STAGING = process.env.IS_STAGING === 'true'
+export const STAGING_PASSWORD = process.env.STAGING_PASSWORD as string

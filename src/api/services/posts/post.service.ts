@@ -1,6 +1,6 @@
 import { readItems } from '@directus/sdk'
 
-import { directus } from '~/lib/directus'
+import { directus } from '~/lib/directus/server'
 
 import { fields, filters } from './post.constants'
 

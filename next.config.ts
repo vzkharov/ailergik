@@ -3,8 +3,8 @@ import type { NextConfig } from 'next'
 import { IS_REDIRECT_PARTNERS } from '~/env'
 
 const nextConfig: NextConfig = {
-  logging: {
-    fetches: { fullUrl: true, hmrRefreshes: true },
+  experimental: {
+    after: true,
   },
   async redirects() {
     if (!IS_REDIRECT_PARTNERS) {

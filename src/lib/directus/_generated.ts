@@ -7,6 +7,17 @@ export interface Customer {
   date_created?: string | null
 }
 
+export interface Entity {
+  /** @required */
+  slug: string
+  status?: 'published' | 'draft' | 'archived'
+  sort?: number | null
+  user_created?: DirectusUser | string | null
+  date_created?: string | null
+  user_updated?: DirectusUser | string | null
+  date_updated?: string | null
+}
+
 export interface Faq {
   /** @required */
   id: number
@@ -40,57 +51,25 @@ export interface Post {
   cover: DirectusFile | string
   /** @required */
   subsection: TopicSubsection | string
+  views?: number
 }
 
-export interface PostView {
+export interface Product {
   /** @required */
   id: number
-  /** @required */
-  value: string
-}
-
-export interface SeoDetail {
-  /** @required */
-  id: number
-  meta_title?: string | null
-  meta_description?: string | null
-  meta_keywords?: string | null
-  schema_type?:
-    | ``
-    | 'article'
-    | 'book'
-    | 'course'
-    | 'event'
-    | 'jobposting'
-    | 'music'
-    | 'product'
-    | 'recipe'
-    | 'restaurant'
-    | 'video'
-    | 'person'
-    | 'service'
-    | 'software'
-    | null
-  meta_robots?: any | null
-  meta_social?: string | null
-  facebook_image?: DirectusFile | string | null
-  twitter_image?: DirectusFile | string | null
-}
-
-export interface SeoRedirection {
-  /** @required */
-  id: number
+  status?: 'published' | 'draft' | 'archived'
+  sort?: number | null
+  user_created?: DirectusUser | string | null
   date_created?: string | null
+  user_updated?: DirectusUser | string | null
   date_updated?: string | null
-  status?: string | null
-  old_url?: string | null
-  new_url?: string | null
-}
-
-export interface SeoSetting {
   /** @required */
-  key: string
-  value?: Record<string, any> | null
+  name: string
+  /** @required */
+  description: string
+  content?: string | null
+  /** @required */
+  slug: string
 }
 
 export interface Social {
@@ -149,6 +128,31 @@ export interface TopicSubsection {
   name: string
   /** @required */
   slug: string
+}
+
+export interface User {
+  /** @required */
+  id: string
+  sort?: number | null
+  verified?: boolean | null
+  /** @required */
+  role: 'doctor' | 'patient'
+  birthday?: string | null
+  first_name?: string | null
+  last_name?: string | null
+  avi?: DirectusFile | string | null
+  sex?: 'man' | 'woman' | null
+  /** @required */
+  phone: string
+  email?: string | null
+  saved?: UserPost[] | string[]
+}
+
+export interface UserPost {
+  /** @required */
+  id: number
+  user_id?: User | string | null
+  post_id?: Post | string | null
 }
 
 export interface DirectusActivity {
@@ -575,17 +579,17 @@ export interface DirectusExtension {
 
 export interface Schema {
   customers: Customer[]
+  entity: Entity[]
   faq: Faq[]
   post: Post[]
-  post_view: PostView[]
-  seo_detail: SeoDetail[]
-  seo_redirection: SeoRedirection[]
-  seo_setting: SeoSetting[]
+  products: Product[]
   social: Social[]
   topic: Topic[]
   topic_section: TopicSection[]
   topic_section_topic_subsection_1: TopicSectionTopicSubsection1[]
   topic_subsection: TopicSubsection[]
+  user: User[]
+  user_post: UserPost[]
   directus_activity: DirectusActivity[]
   directus_collections: DirectusCollection[]
   directus_fields: DirectusField[]

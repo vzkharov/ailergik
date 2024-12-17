@@ -25,8 +25,12 @@ type StyleProps = Partial<{
   style: React.CSSProperties
 }>
 
-type Provider = (props: { children: ReactChildren }) => React.ReactNode
-type Layout = (props: Readonly<{ children: ReactChildren }>) => React.ReactNode
+type Provider<P = {}> = (
+  props: P & { children: ReactChildren },
+) => React.ReactNode
+type Layout = (
+  props: Readonly<{ children: ReactChildren }>,
+) => Promise<React.ReactNode> | React.ReactNode
 
 type PageProps<P = {}, S = {}> = Readonly<{
   params: Promise<P>

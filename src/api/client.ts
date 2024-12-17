@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import { hc } from 'hono/client';
+import { hc } from 'hono/client'
 
-import type { App } from './server';
+import type { App } from './server'
 
-const client = hc<App>('');
+const client = hc<App>('')
 
-export { client };
+export { client }

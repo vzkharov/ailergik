@@ -23,9 +23,11 @@ const fields = {
     'id',
     'slug',
     'name',
+    'views',
     'content',
     'description',
     'date_created',
+    'views',
     {
       cover: ['*'],
       topic: ['id', 'name', 'color', 'slug'],

@@ -67,7 +67,7 @@ const PostPage: Page<Params> = async props => {
         />
         <div className={styles.content()}>
           <PostCover post={post} />
-          <PostActions />
+          <PostActions post={post} />
           <Markdown source={post.content} className={styles.markdown()} />
         </div>
       </div>
