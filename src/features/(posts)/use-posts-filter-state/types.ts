@@ -1,6 +1,8 @@
 type FilterState = {
   page: number
-  subsection: string
+  topic?: string
+  section?: string
+  subsection?: string
 }
 
 export type { FilterState }

@@ -13,7 +13,10 @@ const PopoverTrigger = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <PopoverPrimitive.Trigger
     ref={ref}
-    className={cn('aspect-square aria-expanded:bg-transparent', className)}
+    className={cn(
+      'aria-expanded:bg-foreground aria-expanded:text-background',
+      className,
+    )}
     {...props}
   />
 ))

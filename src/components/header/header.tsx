@@ -10,7 +10,7 @@ import { HeartIcon } from '~/components/ui/icons/heart'
 import { BookmarkIcon } from '~/components/ui/icons/bookmark'
 import { EmergencyIcon } from '~/components/ui/icons/emergency-icon'
 
-import { AuthButton } from '~/components/(buttons)/auth-button'
+import { AuthButton } from '~/modules/(forms)/auth-form'
 import { SearchButton } from '~/components/(buttons)/search-button'
 import { LocationButton } from '~/components/(buttons)/location-button'
 import { NavigationButton } from '~/components/(buttons)/navigatin-button'

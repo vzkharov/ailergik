@@ -10,11 +10,16 @@ type SearchParams = {
   topic?: string
   section?: string
   subsection?: string
+
+  ids?: string[]
+  topicId?: string | number | null | undefined
 }
 
 const fetchPosts = ({
+  ids,
   count,
   topic,
+  topicId,
   section,
   subsection,
   page = 1,
@@ -27,7 +32,10 @@ const fetchPosts = ({
       sort: '-date_created',
       filter: {
         ...filters.published,
-        topic: { _eq: topic },
+        id: { _in: ids },
+        topic: {
+          _eq: topic || topicId === undefined ? undefined : String(topicId),
+        },
         section: { _eq: section },
         subsection: { _eq: subsection },
       },

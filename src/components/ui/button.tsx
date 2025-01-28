@@ -37,8 +37,12 @@ const buttonVariants = cva(
         lg: 'h-11 rounded-md px-8',
         icon: 'h-9 w-9',
       },
+      readOnly: {
+        true: 'pointer-events-none',
+      },
     },
     defaultVariants: {
+      readOnly: false,
       size: 'default',
       variant: 'default',
     },
@@ -49,6 +53,7 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
+
   icon?: ReactChildren
   startContent?: ReactChildren
 }
@@ -58,6 +63,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     {
       icon,
       title,
+      readOnly,
       children,
       startContent,
       className,
@@ -71,15 +77,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const Comp = asChild ? Slot : 'button'
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ size, variant, readOnly, className }))}
         ref={ref}
         title={title}
         aria-label={title}
         {...props}
       >
-        {startContent}
+        {startContent ? (
+          <span className="flex-none">{startContent}</span>
+        ) : null}
         <span className="translate-y-[1.5px]">{children}</span>
-        {icon}
+        {icon ? <span className="flex-none">{icon}</span> : null}
       </Comp>
     )
   },
