@@ -7,7 +7,7 @@ import type { StyleProps } from '~/lib/types'
 
 import { Input } from '~/components/ui/input'
 import { Separator } from '~/components/ui/separator'
-import { SubmitButton } from '~/components/form'
+import { SubmitButton } from '~/components/(buttons)/submit-button'
 import { AgreementCheckbox } from '~/components/(buttons)/agreement-checkbox'
 
 type Values = {

@@ -8,7 +8,7 @@ import type { StyleProps } from '~/lib/types'
 import { Text } from '~/components/ui/text'
 import { Button } from '~/components/ui/button'
 import { OtpInput } from '~/components/(inputs)/otp-input'
-import { SubmitButton } from '~/components/form'
+import { SubmitButton } from '~/components/(buttons)/submit-button'
 
 type Values = {
   otp: string
