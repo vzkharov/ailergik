@@ -43,10 +43,7 @@ const PartnersAccordionItem = ({
       className,
     )}
   >
-    <AccordionTrigger
-      asChild
-      className="group/accordion-trigger gap-2 p-6 text-[#142850] md:p-8"
-    >
+    <AccordionTrigger className="group/accordion-trigger cursor-pointer gap-2 p-6 text-[#142850] md:p-8">
       <TopicCard title={title} description={description} />
     </AccordionTrigger>
     <AccordionContent className="text-[#142850] max-md:px-6">
