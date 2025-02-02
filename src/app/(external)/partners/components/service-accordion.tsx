@@ -38,7 +38,7 @@ const ServiceAccordionItem = ({
       className,
     )}
   >
-    <AccordionTrigger className="group/accordion-trigger">
+    <AccordionTrigger asChild className="group/accordion-trigger">
       <ServiceCard title={title} img={img} />
     </AccordionTrigger>
     <AccordionContent>

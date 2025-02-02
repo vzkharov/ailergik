@@ -39,10 +39,8 @@ export const UPSTASH_REDIS_TOKEN = process.env.UPSTASH_REDIS_TOKEN ?? ''
  */
 export const IS_REDIRECT_PARTNERS = process.env.IS_REDIRECT_PARTNERS === 'true'
 
-
-export const BE_PARTNER_TITLE = process.env.BE_PARTNER_TITLE || 'Ailergik'
-export const BE_PARTNER_SUBJECT =
-  process.env.BE_PARTNER_SUBJECT || 'Новое обращение'
+export const BE_PARTNER_TITLE = process.env.BE_PARTNER_TITLE
+export const BE_PARTNER_SUBJECT = process.env.BE_PARTNER_SUBJECT
 export const BE_PARTNER_TO_EMAIL = process.env.BE_PARTNER_TO_EMAIL
 export const BE_PARTNER_FROM_EMAIL = process.env.BE_PARTNER_FROM_EMAIL
 
@@ -50,4 +48,3 @@ export const RESEND_API_TOKEN = process.env.RESEND_API_TOKEN || ''
 
 export const IS_STAGING = process.env.IS_STAGING === 'true'
 export const STAGING_PASSWORD = process.env.STAGING_PASSWORD as string
-

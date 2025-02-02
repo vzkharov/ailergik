@@ -49,6 +49,7 @@ const PartnersPage: Page = () => (
         <CardDescription>
           Легкий способ управлять аллергией с помощью данных и технологий
         </CardDescription>
+
         <Dialog>
           <DialogTrigger asChild>
             <DetailButton>ПРИСОЕДИНИТЬСЯ</DetailButton>

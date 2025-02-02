@@ -29,7 +29,7 @@ const submitBePartnerform = async (formData: FormData): Promise<Response> => {
   const { error } = await resend.emails.send({
     from: `${BE_PARTNER_TITLE} <${BE_PARTNER_FROM_EMAIL}>`,
     to: [BE_PARTNER_TO_EMAIL],
-    subject: BE_PARTNER_SUBJECT,
+    subject: BE_PARTNER_SUBJECT || 'Новое обращение',
     react: ContactEmail(body),
   })
 

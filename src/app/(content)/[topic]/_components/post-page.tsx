@@ -7,7 +7,7 @@ import { Accordion } from '~/components/ui/accordion'
 import { ListBlock } from '~/components/(blocks)/list-block'
 import { CheckBlock } from '~/components/(blocks)/check-block'
 // import { PostActions } from '../[section]/[post]/_components/post-action'
-import { DoctorCard } from '../../partners/components/doctor-card'
+import { DoctorCard } from '~/app/(external)/partners/components/doctor-card'
 import { DetailButton } from '~/components/(buttons)/detail-button'
 
 // Это все просто контент одной страницы, и этот компонент нужно удалить

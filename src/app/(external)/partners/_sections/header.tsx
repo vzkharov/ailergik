@@ -1,10 +1,10 @@
 import { cn } from '~/lib/utils'
 
-import { navigation } from '../_data/links'
-
 import { Logo } from '~/components/logo'
 import { Title } from '~/components/ui/text'
 import { MenuButton } from '~/components/(buttons)/menu-button'
+
+import { navigation } from '../_data/links'
 
 const Header = () => (
   <header className="flex w-full items-center rounded-full bg-white px-6 py-3 text-sm">
@@ -22,13 +22,13 @@ const Header = () => (
             href={link.href}
             className={cn(
               'block',
-              'px-5 py-4 font-helveticaMedium uppercase',
+              'font-helveticaMedium px-5 py-4 uppercase',
               link.className,
             )}
           >
             <Title
               highlight
-              className="relative block translate-y-px font-helveticaMedium text-sm"
+              className="font-helveticaMedium relative block translate-y-px text-sm"
             >
               {link.title}
             </Title>
@@ -40,7 +40,7 @@ const Header = () => (
           href={navigation.contacts.href}
           className={cn(
             'block',
-            'px-5 py-4 font-helveticaMedium uppercase',
+            'font-helveticaMedium px-5 py-4 uppercase',
             navigation.contacts.className,
           )}
         >

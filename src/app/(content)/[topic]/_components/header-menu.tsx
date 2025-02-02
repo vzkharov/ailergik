@@ -5,7 +5,7 @@ import {
   Card,
   CardDescription,
   CardTitle,
-} from '../../partners/components/cards'
+} from '~/app/(external)/partners/components/cards'
 import { Button } from '~/components/ui/button'
 import { YouTubeIcon } from '~/components/ui/icons/youtube-icon'
 import { NoteIcon } from '~/components/ui/icons/note-icon'
@@ -36,7 +36,7 @@ const menuItems: MenuItem[] = [
 const HeaderMenu = ({ videobutton = false }: { videobutton: boolean }) => (
   <div className="flex flex-row gap-6">
     <div className="min-w-[263px]">
-      <nav className="w-full rounded-3xl bg-white px-6 py-5 font-helveticaMedium">
+      <nav className="rounded-3xl font-helveticaMedium w-full bg-white px-6 py-5">
         <ul className="space-y-3">
           {/* поменять тут MenuItems на какой topics navigation */}
           {menuItems.map(item => (
@@ -48,7 +48,7 @@ const HeaderMenu = ({ videobutton = false }: { videobutton: boolean }) => (
               </a>
               {/* Тут короче подменю если оно есть*/}
               {item.subMenu && (
-                <ul className="ml-2 mt-3 list-inside list-disc space-y-4 font-helveticaLight text-sm">
+                <ul className="font-helveticaLight ml-2 mt-3 list-inside list-disc space-y-4 text-sm">
                   {item.subMenu.map(subItem => (
                     <li key={subItem.path}>
                       <a href={subItem.path}>
@@ -71,7 +71,7 @@ const HeaderMenu = ({ videobutton = false }: { videobutton: boolean }) => (
           src="/partners/wel.png"
           width={845}
           height={429}
-          className="max-md:h-[450px] max-md:rounded-3xl"
+          className="max-md:rounded-3xl max-md:h-[450px]"
         />
 
         <Card className="max-md:bottom-20 max-md:left-0">
@@ -84,7 +84,7 @@ const HeaderMenu = ({ videobutton = false }: { videobutton: boolean }) => (
 
         {videobutton ? (
           <Button
-            className="absolute right-1 top-0 gap-y-2 space-x-2 rounded-3xl font-helveticaMedium text-xs"
+            className="rounded-3xl font-helveticaMedium absolute right-1 top-0 gap-y-2 space-x-2 text-xs"
             variant="colored"
           >
             <div className="translate-y-px uppercase">Смотреть видео</div>
@@ -92,7 +92,7 @@ const HeaderMenu = ({ videobutton = false }: { videobutton: boolean }) => (
           </Button>
         ) : null}
         <Button
-          className="absolute right-1 top-0 gap-y-2 space-x-2 rounded-3xl font-helveticaMedium text-xs"
+          className="rounded-3xl font-helveticaMedium absolute right-1 top-0 gap-y-2 space-x-2 text-xs"
           variant="colored"
         >
           <div className="translate-y-px uppercase">Смотреть видео</div>
@@ -101,14 +101,14 @@ const HeaderMenu = ({ videobutton = false }: { videobutton: boolean }) => (
       </div>
       <div className="flex flex-row space-x-5">
         <Button
-          className="gap-y-2 space-x-2 rounded-3xl font-helveticaMedium text-xs"
+          className="rounded-3xl font-helveticaMedium gap-y-2 space-x-2 text-xs"
           variant="outline"
         >
           <div className="translate-y-px uppercase">В закладки</div>
           <NoteIcon className="w-full" />
         </Button>
         <Button
-          className="gap-y-2 space-x-2 rounded-3xl font-helveticaMedium text-xs"
+          className="rounded-3xl font-helveticaMedium gap-y-2 space-x-2 text-xs"
           variant="colored"
         >
           <div className="translate-y-px uppercase">поделиться</div>

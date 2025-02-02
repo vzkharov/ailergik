@@ -12,7 +12,7 @@ import {
 import { XIcon } from '../ui/icons/x-icon'
 import { MenuIcon } from '../ui/icons/menu-icon'
 
-import { navigation } from '~/app/(content)/partners/_data/links'
+import { navigation } from '~/app/(external)/partners/_data/links'
 
 const MenuButton = () => {
   const [open, setOpen] = useState<boolean>(false)
@@ -39,7 +39,7 @@ const MenuButton = () => {
                 href={link.href}
                 className={cn(
                   'block',
-                  'px-5 py-4 font-helveticaMedium uppercase',
+                  'font-helveticaMedium px-5 py-4 uppercase',
                   link.className,
                 )}
               >
@@ -55,7 +55,7 @@ const MenuButton = () => {
           href={navigation.contacts.href}
           className={cn(
             'block',
-            'px-5 font-helveticaMedium uppercase',
+            'font-helveticaMedium px-5 uppercase',
             'mt-3 h-fit w-full rounded-full bg-[#142850] py-2.5 text-white flex-center',
           )}
         >
