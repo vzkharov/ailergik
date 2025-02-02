@@ -5,7 +5,8 @@ type As = ElementType<any>
 type ReactPropsOf<T extends As> = ComponentPropsWithoutRef<T>
 
 type IconProps = ReactPropsOf<'svg'> & {
-	size?: number | string
+  size?: number | string
+  strokeWidth?: number | string
 }
 
 type IconElement = FC<IconProps>

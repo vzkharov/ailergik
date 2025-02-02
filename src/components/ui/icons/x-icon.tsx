@@ -1,20 +1,21 @@
 import type { IconElement } from './types'
 
-const XIcon: IconElement = ({ ...props }) => (
+const XIcon: IconElement = ({ size = 20, strokeWidth = 2, ...props }) => (
   <svg
-    width="20"
-    height="20"
     {...props}
-    viewBox="0 0 20 20"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
     fill="none"
+    stroke="currentColor"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path
-      d="M15 5L5 15M5 5L15 15"
-      stroke="#142850"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M18 6 6 18" />
+    <path d="m6 6 12 12" />
   </svg>
 )
+
 export { XIcon }

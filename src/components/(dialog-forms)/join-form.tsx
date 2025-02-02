@@ -5,6 +5,7 @@ import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 
 import {
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -63,9 +64,11 @@ const JoinForm = ({ className }: StyleProps) => (
         />
       </div>
 
-      <SubmitButton variant="colored" className="h-14 w-full">
-        Перезвонить мне
-      </SubmitButton>
+      <DialogClose>
+        <SubmitButton variant="colored" className="h-14 w-full">
+          Перезвонить мне
+        </SubmitButton>
+      </DialogClose>
     </BePartnerForm>
   </DialogContent>
 )

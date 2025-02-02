@@ -7,8 +7,8 @@ import { MenuButton } from '~/components/(buttons)/menu-button'
 import { navigation } from '../_data/links'
 
 const Header = () => (
-  <header className="flex w-full items-center rounded-full bg-white px-6 py-3 text-sm">
-    <Logo href="/partners" className="flex-1 self-center max-md:text-center" />
+  <header className="sticky top-9 z-50 !mt-0 mb-lg flex w-full items-center rounded-full bg-white py-3 pl-6 pr-4 text-sm md:pl-6 md:pr-6">
+    <Logo href="/partners" className="mr-auto self-center max-md:text-center" />
 
     <ul className="ml-auto flex items-center max-md:hidden">
       {[
@@ -51,7 +51,7 @@ const Header = () => (
       </li>
     </ul>
 
-    <div className="md:hidden">
+    <div className="translate-x-0 md:hidden">
       <MenuButton />
     </div>
   </header>

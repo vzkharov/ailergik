@@ -28,14 +28,12 @@ const subtitle =
   'Инновационные подходы и стратегии для повышения качества обслуживания клиентов'
 
 const PartnersPage: Page = () => (
-  <main className="flex flex-col gap-y-16 pb-5 pt-8">
-    <div className="absolute inset-x-0 top-0 -z-10 h-[454px] bg-[#9ED8F6]" />
+  <main className="flex flex-col space-y-16 pb-5 pt-8">
+    <div className="absolute inset-x-0 top-0 -z-10 my-0 h-[454px] bg-[#9ED8F6]" />
 
-    <div className="relative">
-      <Header />
+    <Header />
 
-      <Spacer y="lg" />
-
+    <div className="relative !mt-lg">
       <Image
         alt="easy"
         src="/partners/welcome.png"
