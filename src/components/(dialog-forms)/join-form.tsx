@@ -29,15 +29,21 @@ const JoinForm = ({ className }: StyleProps) => (
       </DialogDescription>
     </DialogHeader>
     <BePartnerForm className={cn('flex flex-col gap-14', className)}>
-      <Input type="text" placeholder="имя*" variant="outline" />
+      <Input type="text" placeholder="имя*" variant="outline" name="name" />
 
       <Input
         type="text"
         placeholder="Вид деятельности Вашей компании*"
         variant="outline"
+        name="occupation"
       />
 
-      <Input type="tel" placeholder="Ваш номер телефона*" variant="outline" />
+      <Input
+        type="tel"
+        placeholder="Ваш номер телефона*"
+        variant="outline"
+        name="phone"
+      />
       <div className="space-y-5">
         <AgreementCheckbox
           required

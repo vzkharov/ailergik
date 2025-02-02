@@ -39,7 +39,7 @@ const topics = [
     ],
     image: [
       '/partners/topics/medicine_1.png',
-      '/partners/topics/medicine_1.png',
+      '/partners/topics/medicine_2.png',
     ],
   },
   {
@@ -66,7 +66,7 @@ const topics = [
         text: 'Приглашаем интернет-магазины здорового питания, продуктовые сети, имеющие линейки продуктов гипоаллергенного и здорового питания.',
       },
     ],
-    image: ['/partners/topics/food_1.png', '/partners/topics/food_1.png'],
+    image: ['/partners/topics/food_1.png', '/partners/topics/food_2.png'],
   },
   {
     id: '3',
@@ -92,7 +92,7 @@ const topics = [
         text: 'Приглашаем интернет-магазины гаджетов, товаров для дома, предметов интерьера, которые можно отнести к разряду гипоаллергенных и экологичных.',
       },
     ],
-    image: ['/partners/topics/house_1.png', '/partners/topics/house_1.png'],
+    image: ['/partners/topics/house_1.png', '/partners/topics/house_2.png'],
   },
   {
     id: '4',
@@ -117,7 +117,7 @@ const topics = [
         text: 'Приглашаем интернет-магазины с полезными товарами для путешествий',
       },
     ],
-    image: ['/partners/topics/tourism_1.png', '/partners/topics/tourism_1.png'],
+    image: ['/partners/topics/tourism_1.png', '/partners/topics/tourism_2.png'],
   },
 ] satisfies PartnerTopic[]
 

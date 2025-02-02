@@ -5,7 +5,9 @@ import type { StyleProps } from '~/lib/types'
 
 import { Image } from '~/components/ui/image'
 import { Button } from '~/components/ui/button'
+import { Dialog, DialogTrigger } from '~/components/ui/dialog'
 import { DetailButton } from '~/components/(buttons)/detail-button'
+import { JoinForm } from '~/components/(dialog-forms)/join-form'
 
 type Content = {
   title: string
@@ -64,10 +66,14 @@ const TopicContent = ({ content, images }: TopicContentProps) => (
           <p className="text-sm leading-5">{block.text}</p>
         </div>
       ))}
-
-      <Button variant="colored" className="w-full uppercase md:w-fit">
-        Отправить сообщение
-      </Button>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="colored" className="w-full uppercase md:w-fit">
+            Отправить сообщение
+          </Button>
+        </DialogTrigger>
+        <JoinForm />
+      </Dialog>
     </div>
 
     <div className="flex flex-row justify-center gap-5 md:order-last">
@@ -78,7 +84,7 @@ const TopicContent = ({ content, images }: TopicContentProps) => (
             alt="Medicine Image"
             width={250}
             height={500}
-            className="h-[200px] w-[100px] overflow-hidden object-cover md:h-[525px] md:w-[255px]"
+            className="aspect-[1/2] h-full overflow-hidden object-contain"
           />
         </div>
       ))}

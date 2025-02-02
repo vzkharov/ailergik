@@ -6,14 +6,11 @@ import { Base, Card, CardInfo } from './_base'
 
 type ContactEmailProps = {
   name?: string
-  email?: string
   phone?: string
-  details?: string
-  referral?: string
+  occupation?: string
 }
 
 const ContactEmail = (state: ContactEmailProps) => {
-  const message = state.details
   const sender = [
     {
       name: 'Имя',
@@ -24,8 +21,8 @@ const ContactEmail = (state: ContactEmailProps) => {
       value: state.phone || emptyFieldFallback,
     },
     {
-      name: 'Email',
-      value: state.email || emptyFieldFallback,
+      name: 'Вид деятельности',
+      value: state.occupation || emptyFieldFallback,
     },
   ]
 
@@ -51,12 +48,6 @@ const ContactEmail = (state: ContactEmailProps) => {
             <CardInfo key={field.name} {...field} />
           ))}
         </Card>
-
-        {message ? (
-          <Card title="Сообщение" className={styles.message()}>
-            {message}
-          </Card>
-        ) : null}
 
         <div className={styles.spacer()} />
 

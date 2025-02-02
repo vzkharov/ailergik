@@ -20,6 +20,8 @@ import { ContactsCard } from './components/contacts-card'
 import { HighlightedTitle } from './components/hilighted-title'
 import { Card, CardDescription, CardTitle } from './components/cards'
 import { OrganizationCopyright } from '~/components/organization-copyright'
+import { Dialog, DialogTrigger } from '~/components/ui/dialog'
+import { JoinForm } from '~/components/(dialog-forms)/join-form'
 
 const title = 'Приглашаем компании и врачей к  сотрудничеству!'
 const subtitle =
@@ -47,7 +49,12 @@ const PartnersPage: Page = () => (
         <CardDescription>
           Легкий способ управлять аллергией с помощью данных и технологий
         </CardDescription>
-        <DetailButton>ПРИСОЕДИНИТЬСЯ</DetailButton>
+        <Dialog>
+          <DialogTrigger asChild>
+            <DetailButton>ПРИСОЕДИНИТЬСЯ</DetailButton>
+          </DialogTrigger>
+          <JoinForm />
+        </Dialog>
       </Card>
     </div>
 
@@ -101,7 +108,7 @@ const PartnersPage: Page = () => (
     <Separator />
 
     <Section id={navigation.funcs.id}>
-      <HighlightedTitle className="after:right-20 after:w-[74%] max-md:after:right-12 max-md:after:w-[60%]">
+      <HighlightedTitle className="after:right-20 after:w-[70%] max-md:after:right-12 max-md:after:w-[60%]">
         КАКИЕ ФУНКЦИИ ДЛЯ ПОЛЬЗОВАТЕЛЕЙ МЫ ВНЕДРИЛИ В ВЕБ-ПРИЛОЖЕНИЕ?
       </HighlightedTitle>
 
