@@ -16,7 +16,7 @@ const ContactsCard = () => (
         </h5>
 
         <div className="flex w-full flex-row justify-center gap-6">
-          <Link href={''} className="w-fit">
+          <Link href="https://t.me/+375291800375" className="w-fit">
             <Image
               alt="Telegram"
               src="/partners/contacts/telegram.png"
@@ -25,7 +25,7 @@ const ContactsCard = () => (
               className="w-full"
             />
           </Link>
-          <Link href={''}>
+          <Link href="viber://chat?number=%2B375291800375">
             <Image
               alt="Viber"
               src="/partners/contacts/viber.png"
@@ -34,7 +34,7 @@ const ContactsCard = () => (
               className="w-full"
             />
           </Link>
-          <Link href={''}>
+          <Link href="https://wa.me/375291800375">
             <Image
               alt="Whatsapp"
               src="/partners/contacts/whatsapp.png"
@@ -43,7 +43,7 @@ const ContactsCard = () => (
               className="w-full"
             />
           </Link>
-          <Link href={''}>
+          <Link href="tel:+375291800375">
             <Image
               alt="Call"
               src="/partners/contacts/call.png"

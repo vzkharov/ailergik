@@ -18,7 +18,7 @@ type Response = { success: boolean; status: number; message: string }
 const submitBePartnerform = async (formData: FormData): Promise<Response> => {
   const body = extractFormData<BePartnerState>(formData)
 
-  if (!body.email && !body.phone) {
+  if (!body.phone) {
     return constructResponse(false, messages.validationError)
   }
 

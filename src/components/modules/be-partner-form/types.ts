@@ -1,9 +1,7 @@
 type BePartnerState = Partial<{
   name: string
-  email: string
+  occupation: string
   phone: string
-  details: string
-  referral: string
 }>
 
 type BePartnerFields = keyof BePartnerState
