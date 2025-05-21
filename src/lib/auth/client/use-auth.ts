@@ -29,7 +29,7 @@ const useAuth = () => {
     mutationFn: client.api.user.login.check.$post,
     onSuccess: () => {
       toast.success('Вы успешно вошли!')
-      queryClient.invalidateQueries({ queryKey: QUERY_KEY })
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY] })
     },
   })
 
@@ -41,7 +41,7 @@ const useAuth = () => {
       router.push('/')
       router.refresh()
       user.refetch()
-      queryClient.invalidateQueries({ queryKey: QUERY_KEY })
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY] })
     },
   })
 
