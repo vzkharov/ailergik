@@ -34,7 +34,7 @@ const fetchPosts = ({
         ...filters.published,
         id: { _in: ids },
         topic: {
-          _eq: topic || topicId === undefined ? undefined : String(topicId),
+          _eq: topic || (topicId === undefined ? undefined : String(topicId)),
         },
         section: { _eq: section },
         subsection: { _eq: subsection },
